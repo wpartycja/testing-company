@@ -5,5 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(.)
 
-add_executable(proj
-        main.cpp)
+add_executable(proj game.h)
