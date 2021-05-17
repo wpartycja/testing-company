@@ -1,17 +1,44 @@
 #pragma once
 
+#include <set>
+#include <queue>
+#include "game.h"
+
 class Employee {
 protected:
-    const uint id;
-    const uint wage;
-    uint hoursWorked;
+    const unsigned int id;
+    const unsigned int wage;
+    unsigned int hoursWorked;
 
-    virtual uint bonus();
+    virtual unsigned int bonus() = 0;
 
 public:
-    Employee(uint id, uint wage);
+    Employee(unsigned int id, unsigned int wage);
 
-    uint getSalary();
+    unsigned int getSalary();
 
-    uint getId();
+    unsigned int getId();
+};
+
+class Tester : Employee {
+    const std::set<Genre> genres;
+
+    unsigned int bonus() override;
+
+public:
+    Tester(unsigned int id, unsigned int wage,
+           std::set<Genre> genres); // albo bez wage tylko zalozyc np 20 dla kazdego testera
+
+    bool canTest(Genre genre);
+};
+
+class Manager : Employee {
+    const std::queue<int> requests;
+    unsigned int requestsCompleted;
+
+    unsigned int bonus() override;
+
+public:
+    Manager(unsigned int id, unsigned int wage); // albo bez wage tylko zalozyc np 30 dla kazdego managera
+    void nextHour();
 };
