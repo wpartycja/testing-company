@@ -3,7 +3,9 @@
 #include <string>
 
 enum Genre {
-    sport, racing, sandbox, etc
+    action, adventure, action_adventure, RPG, simulation,
+    strategy, sports, MMO, sandbox, casual, horror,
+    logic, party, typing, photography, idle
 };
 
 class Game {
