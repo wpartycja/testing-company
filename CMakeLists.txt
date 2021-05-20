@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.20)
+cmake_minimum_required(VERSION 3.17)
 project(proj)
 
 set(CMAKE_CXX_STANDARD 11)
 
 include_directories(.)
 
-add_executable(proj game.h employee.h)
+add_executable(proj game.h employee.h employee.cpp)
