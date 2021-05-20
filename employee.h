@@ -6,18 +6,17 @@
 
 class Employee {
 protected:
-    const unsigned int id;
-    const unsigned int wage;
+    unsigned int id;
+    unsigned int wage;
     unsigned int hoursWorked;
 
     virtual unsigned int bonus() = 0;
 
 public:
-    Employee(unsigned int id, unsigned int wage);
+    Employee(const unsigned int n_id, const unsigned int n_wage);
 
     unsigned int getSalary();
-
-    unsigned int getId();
+    unsigned int getId() const;
 };
 
 class Tester : Employee {
@@ -26,19 +25,19 @@ class Tester : Employee {
     unsigned int bonus() override;
 
 public:
-    Tester(unsigned int id, unsigned int wage,
-           std::set<Genre> genres); // albo bez wage tylko zalozyc np 20 dla kazdego testera
+    Tester(unsigned int n_id, unsigned int n_wage,
+           std::set<Genre> n_genres); // albo bez wage tylko zalozyc np 20 dla kazdego testera
 
     bool canTest(Genre genre);
 };
 
 class Manager : Employee {
-    const std::queue<int> requests;
+    std::queue<int> requests;
     unsigned int requestsCompleted;
 
     unsigned int bonus() override;
 
 public:
-    Manager(unsigned int id, unsigned int wage); // albo bez wage tylko zalozyc np 30 dla kazdego managera
+    Manager(unsigned int n_id, unsigned int n_wage); // albo bez wage tylko zalozyc np 30 dla kazdego managera
     void nextHour();
 };
