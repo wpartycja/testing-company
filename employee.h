@@ -8,7 +8,7 @@ class Employee {
 protected:
     unsigned int id;
     unsigned int wage;
-    unsigned int hoursWorked;
+    unsigned int hoursWorked = 0;
 
     virtual unsigned int bonus() = 0;
 
@@ -34,6 +34,7 @@ public:
 class Manager : Employee {
     std::queue<int> requests;
     unsigned int requestsCompleted;
+    unsigned int hoursWorked = 40;
 
     unsigned int bonus() override;
 
