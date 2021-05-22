@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(.)
 
-add_executable(proj game.h employee.h employee.cpp publisher.cpp publisher.h)
+add_executable(proj game.h employee.h employee.cpp publisher.cpp publisher.h game.cpp)
