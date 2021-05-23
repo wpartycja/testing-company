@@ -45,11 +45,11 @@ void Game::addRating(float rating) {
 //ReviewRequest
 
 //constructor
-ReviewRequest::ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested, unsigned int n_hourStart) :
-        id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested), hourStart(n_hourStart) {}
+ReviewRequest::ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested) :
+        id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested) {}
 
 //get function
-Game ReviewRequest::getGame() {
+Game ReviewRequest::getGame() const {
     return game;
 }
 
@@ -67,4 +67,12 @@ bool ReviewRequest::isPaid() const {
 void ReviewRequest::pay() {
     paid = true;
     hourPaid = HOUR;
+}
+
+unsigned int ReviewRequest::getHoursLeft() const {
+    return hoursRequested - hoursTested;
+}
+
+void ReviewRequest::test(unsigned int hours) {
+    hoursTested += std::min(hours, hoursRequested - hoursTested);
 }

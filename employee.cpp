@@ -37,10 +37,52 @@ bool Tester::canTest(Genre genre) {
 
 //Manager
 
-Manager::Manager(unsigned int n_id, unsigned int n_wage)
-        : Employee(n_id, n_wage), requestsCompleted(0) {};
+Manager::Manager(unsigned int n_id, unsigned int n_wage, std::vector<Tester> testers)
+        : Employee(n_id, n_wage), testers(std::move(testers)) {};
 
 unsigned int Manager::bonus() {
     return requestsCompleted * 50;
+}
+
+void Manager::nextHour() {
+
+    if (requests.empty()) {
+        // there is nothing to do
+        std::cout << "Manager: there is nothing to do\n";
+        return;
+    }
+
+    // TODO: modify the algorithm such that multiple games can be tested simultaneously
+
+    // get first request from the queue
+    ReviewRequest *request = requests.front();
+
+    // filter testers that can test this genre
+    std::vector<Tester> availableTesters = {};
+    for (auto tester :testers) {
+        if (tester.canTest(request->getGame().getGenre())) {
+            availableTesters.push_back(tester);
+        }
+    }
+
+    // assign testers and print result
+    request->test(availableTesters.size());    // to be implemented
+    if (request->getHoursLeft() == 0) {
+        std::cout << "Manager: " << request->getGame().getTitle() << " completed!\n";
+        requests.pop();
+    } else {
+        std::cout << "Manager: " << request->getGame().getTitle() << " tested for " << availableTesters.size() << "h. "
+                  << request->getHoursLeft() << "h left.\n";
+    }
+
+}
+
+void Manager::canTest(const Genre genre) {
+    // TODO: check if manager has at least 1 tester who can test given genre
+}
+
+void Manager::assignRequest(ReviewRequest *request) {
+    requests.push(request);
+    std::cout << "Manger: assigned " << request->getGame().getTitle() << "\n";
 }
 

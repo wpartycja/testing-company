@@ -16,6 +16,7 @@ public:
     Employee(unsigned int n_id, unsigned int n_wage);
 
     unsigned int getSalary();
+
     unsigned int getId() const;
 };
 
@@ -32,13 +33,18 @@ public:
 };
 
 class Manager : Employee {
-    std::queue<int> requests;
-    unsigned int requestsCompleted;
-    unsigned int hoursWorked = 40;
+    std::queue<ReviewRequest *> requests;
+    std::vector<Tester> testers;
+    unsigned int requestsCompleted = 0;
 
     unsigned int bonus() override;
 
 public:
-    Manager(unsigned int n_id, unsigned int n_wage); // albo bez wage tylko zalozyc np 30 dla kazdego managera
+    Manager(unsigned int n_id, unsigned int n_wage, std::vector<Tester> testers);
+
+    void canTest(Genre genre);
+
+    void assignRequest(ReviewRequest *request);
+
     void nextHour();
 };

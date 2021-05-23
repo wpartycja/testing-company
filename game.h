@@ -41,16 +41,18 @@ class ReviewRequest {
     unsigned int hourPaid = 0;
     bool paid = false;
     unsigned int hoursRequested;
-    unsigned int hourStart;
 
 public:
-    ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested, unsigned int n_hourStart);
+    ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested);
 
-    Game getGame();
+    Game getGame() const;
 
     unsigned int getPrice() const; // get price based on hoursTested and wage
 
     bool isPaid() const;
 
     void pay(); // mark this request as paid
+    unsigned int getHoursLeft() const;
+
+    void test(unsigned int hours);
 };
