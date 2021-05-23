@@ -13,7 +13,7 @@ protected:
     virtual unsigned int bonus() = 0;
 
 public:
-    Employee(const unsigned int n_id, const unsigned int n_wage);
+    Employee(unsigned int n_id, unsigned int n_wage);
 
     unsigned int getSalary();
     unsigned int getId() const;
