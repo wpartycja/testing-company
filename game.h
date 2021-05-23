@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 enum Genre {
     action, adventure, action_adventure, RPG, simulation,
@@ -18,9 +19,9 @@ class Game {
     std::vector<float> ratings;
 
 public:
-    Game(unsigned int n_id, Genre n_genre, std::string n_title, const std::string n_publisher);
+    Game(unsigned int n_id, Genre n_genre, std::string n_title, std::string n_publisher);
 
-    unsigned int getId();
+    unsigned int getId() const;
 
     Genre getGenre();
 
@@ -36,24 +37,20 @@ public:
 class ReviewRequest {
     unsigned int id;
     Game game;
+    unsigned int hoursTested = 0;
+    unsigned int hourPaid = 0;
+    bool paid = false;
     unsigned int hoursRequested;
-    unsigned int hoursTested;
     unsigned int hourStart;
-    unsigned int hourPaid;
-    bool paid;
 
 public:
     ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested, unsigned int n_hourStart);
 
     Game getGame();
 
-    unsigned int setWage(); // sets wage based on game genre
+    unsigned int getPrice() const; // get price based on hoursTested and wage
 
-    void setWage(float n_wage); // sets wage to new falue
-
-    unsigned int getPrice(); // get price based on hoursTested and wage
-
-    bool isPaid();
+    bool isPaid() const;
 
     void pay(); // mark this request as paid
 };

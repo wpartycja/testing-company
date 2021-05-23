@@ -1,5 +1,3 @@
-#pragma once
-
 #include "game.h"
 
 //Time unit
@@ -9,38 +7,38 @@ unsigned int HOUR;
 //Game
 
 //constructor
-Game::Game(unsigned int n_id, Genre n_genre, std::string n_title, const std::string n_publisher) :
-	id(n_id), genre(n_genre), title(n_title), publisher(n_publisher) {}
+Game::Game(unsigned int n_id, Genre n_genre, std::string n_title, std::string n_publisher) :
+        id(n_id), genre(n_genre), title(std::move(n_title)), publisher(std::move(n_publisher)), ratings() {}
 
 //get functions
-unsigned int Game::getId() {
-	return id;
+unsigned int Game::getId() const {
+    return id;
 }
 
 Genre Game::getGenre() {
-	return genre;
+    return genre;
 }
 
 std::string Game::getTitle() {
-	return title;
+    return title;
 }
 
 std::string Game::getPublisher() {
-	return publisher;
+    return publisher;
 }
 
 float Game::getAvgRating() {
-	int number_of_ratings = ratings.size();
-	float sum = 0;
-	for (int i = 0; i < number_of_ratings; i++) {
-		sum += ratings[i];
-	}
-	return sum / number_of_ratings;
+    size_t number_of_ratings = ratings.size();
+    float sum = 0;
+    for (int i = 0; i < number_of_ratings; i++) {
+        sum += ratings[i];
+    }
+    return sum / (float) number_of_ratings;
 }
 
 //add rating
 void Game::addRating(float rating) {
-	ratings.push_back(rating);
+    ratings.push_back(rating);
 }
 
 
@@ -48,40 +46,25 @@ void Game::addRating(float rating) {
 
 //constructor
 ReviewRequest::ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested, unsigned int n_hourStart) :
-	id(n_id), game(n_game), hoursRequested(n_hoursRequested), hourStart(n_hourStart)
-{
-	hoursTested = 0;
-	wage = setWage();
-	hourPaid = NULL;
-	paid = false;
-}
+        id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested), hourStart(n_hourStart) {}
 
 //get function
 Game ReviewRequest::getGame() {
-	return game;
-}
-
-//set wage functions
-unsigned int ReviewRequest::setWage() {
-	return game.getGenre() % 10 * 20;
-}
-
-void ReviewRequest::setWage(float n_wage) {
-	wage = n_wage;
+    return game;
 }
 
 //getPrice
-unsigned int ReviewRequest::getPrice() {
-	return hoursTested * wage;
+unsigned int ReviewRequest::getPrice() const {
+    // mysle ze mozna to uzaleznic np. od liczby testerow(im wiecej testerow tym taniej) ale na razie zostawiam 30 na sztywno
+    return hoursTested * 30;
 }
 
 //paying functions
-bool ReviewRequest::isPaid() {
-	if (paid) return true;
-	return false;
+bool ReviewRequest::isPaid() const {
+    return paid;
 }
 
 void ReviewRequest::pay() {
-	paid = true;
-	hourPaid = HOUR;
+    paid = true;
+    hourPaid = HOUR;
 }
