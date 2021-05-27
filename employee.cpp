@@ -1,5 +1,3 @@
-#pragma once
-
 #include <iostream>
 #include "employee.h"
 #include <set>
@@ -35,6 +33,8 @@ bool Tester::canTest(Genre genre) {
     return it != genres.end();
 }
 
+
+
 //Manager
 
 Manager::Manager(unsigned int n_id, unsigned int n_wage, std::vector<Tester> testers)
@@ -66,7 +66,7 @@ void Manager::nextHour() {
     }
 
     // assign testers and print result
-    request->test(availableTesters.size());    // to be implemented
+    request->test(availableTesters.size());
     if (request->getHoursLeft() == 0) {
         std::cout << "Manager: " << request->getGame().getTitle() << " completed!\n";
         requests.pop();
@@ -83,6 +83,37 @@ void Manager::canTest(const Genre genre) {
 
 void Manager::assignRequest(ReviewRequest *request) {
     requests.push(request);
-    std::cout << "Manger: assigned " << request->getGame().getTitle() << "\n";
+
+    //counting the prize
+
+    //counting how many tester can test that game
+    unsigned int specialistNr = 0;
+    for (auto tester :testers){
+        if (tester.canTest(request->getGame().getGenre())){
+            specialistNr++;
+        }
+    }
+
+    // price is cheaper if the manager has more qualified testers to this genre
+    switch (specialistNr/5){
+        case 0:
+            request->setPrice(request->getHoursRequested()*100);
+        case 1:
+            request->setPrice(request->getHoursRequested()*70);
+        case 2:
+            request->setPrice(request->getHoursRequested()*50);
+        case 3:
+            request->setPrice(request->getHoursRequested()*35);
+        case 4:
+            request->setPrice(request->getHoursRequested()*25);
+        default:
+            request->setPrice(request->getHoursRequested()*20);
+    }
+
+
+
+    std::cout << "Manger: assigned " << request->getGame().getTitle() << "\n" <<
+                 "Price of testing this request is: " << request->getPrice();
 }
+
 
