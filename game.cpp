@@ -48,15 +48,25 @@ void Game::addRating(float rating) {
 ReviewRequest::ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested) :
         id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested) {}
 
+
 //get function
 Game ReviewRequest::getGame() const {
     return game;
 }
 
-//getPrice
 unsigned int ReviewRequest::getPrice() const {
     // mysle ze mozna to uzaleznic np. od liczby testerow(im wiecej testerow tym taniej) ale na razie zostawiam 30 na sztywno
-    return hoursTested * 30;
+    // edit od Pati: zrobiłam tak że manager bedzie patrzył miedzy tym ile ma pracowników zdolnych do tego i na tej zasadzie ustalał cene
+    return price;
+}
+
+unsigned int ReviewRequest::getHoursRequested() const {
+    return hoursRequested;
+}
+
+//set function
+void ReviewRequest::setPrice(float n_price) {
+    price = n_price;
 }
 
 //paying functions
