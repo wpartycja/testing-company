@@ -47,6 +47,7 @@ public:
     ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested);
 
     Game getGame() const;
+    unsigned int getId();
     unsigned int getHoursRequested() const;
     unsigned int getPrice() const; // get price
 
