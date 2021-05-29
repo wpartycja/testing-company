@@ -1,8 +1,9 @@
 #pragma once
 
-#include <set>
+#include <list>
 #include <queue>
 #include "game.h"
+#include <set>
 
 class Employee {
 protected:
@@ -17,10 +18,10 @@ public:
 
     unsigned int getSalary();
 
-    unsigned int getId() const;
+    unsigned int getId();
 };
 
-class Tester : Employee {
+class Tester : public Employee {
     const std::set<Genre> genres;
 
     unsigned int bonus() override;
@@ -30,19 +31,20 @@ public:
            std::set<Genre> n_genres); // albo bez wage tylko zalozyc np 20 dla kazdego testera
 
     bool canTest(Genre genre);
+
 };
 
-class Manager : Employee {
-    std::queue<ReviewRequest *> requests;
-    std::vector<Tester> testers;
+class Manager : public Employee {
+    std::list<ReviewRequest *> requests;
+    std::list<Tester> testers;
     unsigned int requestsCompleted = 0;
 
     unsigned int bonus() override;
 
 public:
-    Manager(unsigned int n_id, unsigned int n_wage, std::vector<Tester> testers);
+    Manager(unsigned int n_id, unsigned int n_wage, std::list<Tester> testers);
 
-    void canTest(Genre genre);
+    bool canTest(Genre genre);
 
     void assignRequest(ReviewRequest *request);
 
