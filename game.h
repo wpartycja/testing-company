@@ -12,16 +12,16 @@ enum Genre {
 class Game {
 
 
-    const unsigned int id;
+    const int id;
     const Genre genre;
     const std::string title;
     const std::string publisher; // czy gra powinna miec publishera? i tak to publisher(jako obiekt) przechowuje gry
     std::vector<float> ratings;
 
 public:
-    Game(unsigned int n_id, Genre n_genre, std::string n_title, std::string n_publisher);
+    Game(int n_id, Genre n_genre, std::string n_title, std::string n_publisher);
 
-    unsigned int getId() const;
+    int getId() const;
 
     Genre getGenre();
 
@@ -35,28 +35,31 @@ public:
 };
 
 class ReviewRequest {
-    unsigned int id;
+    int id;
     Game game;
-    unsigned int hoursTested = 0;
-    unsigned int hourPaid = 0;
+    int hoursTested = 0;
+    int hourPaid = 0;
     bool paid = false;
-    unsigned int hoursRequested;
-    float price = 0;
+    int hoursRequested;
+    int price = 0;
 
 public:
-    ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested);
+    ReviewRequest(int n_id, Game n_game, int n_hoursRequested);
 
     Game getGame() const;
-    unsigned int getId();
-    unsigned int getHoursRequested() const;
-    unsigned int getPrice() const; // get price
 
-    void setPrice(float n_price);
+    int getId() const;
+
+    int getHoursRequested() const;
+
+    int getPrice() const; // get price
+
+    void setPrice(int n_price);
 
     bool isPaid() const;
 
     void pay(); // mark this request as paid
-    unsigned int getHoursLeft() const;
+    int getHoursLeft() const;
 
-    void test(unsigned int hours);
+    void test(int hours);
 };

@@ -1,17 +1,17 @@
 #include "game.h"
 
 //Time unit
-unsigned int HOUR;
+int HOUR;
 
 
 //Game
 
 //constructor
-Game::Game(unsigned int n_id, Genre n_genre, std::string n_title, std::string n_publisher) :
+Game::Game(int n_id, Genre n_genre, std::string n_title, std::string n_publisher) :
         id(n_id), genre(n_genre), title(std::move(n_title)), publisher(std::move(n_publisher)), ratings() {}
 
 //get functions
-unsigned int Game::getId() const {
+int Game::getId() const {
     return id;
 }
 
@@ -45,7 +45,7 @@ void Game::addRating(float rating) {
 //ReviewRequest
 
 //constructor
-ReviewRequest::ReviewRequest(unsigned int n_id, Game n_game, unsigned int n_hoursRequested) :
+ReviewRequest::ReviewRequest(int n_id, Game n_game, int n_hoursRequested) :
         id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested) {}
 
 
@@ -54,22 +54,22 @@ Game ReviewRequest::getGame() const {
     return game;
 }
 
-unsigned int ReviewRequest::getId() {
+int ReviewRequest::getId() const {
     return id;
 }
 
-unsigned int ReviewRequest::getPrice() const {
+int ReviewRequest::getPrice() const {
     // mysle ze mozna to uzaleznic np. od liczby testerow(im wiecej testerow tym taniej) ale na razie zostawiam 30 na sztywno
     // edit od Pati: zrobiłam tak że manager bedzie patrzył miedzy tym ile ma pracowników zdolnych do tego i na tej zasadzie ustalał cene
     return price;
 }
 
-unsigned int ReviewRequest::getHoursRequested() const {
+int ReviewRequest::getHoursRequested() const {
     return hoursRequested;
 }
 
 //set function
-void ReviewRequest::setPrice(float n_price) {
+void ReviewRequest::setPrice(int n_price) {
     price = n_price;
 }
 
@@ -83,10 +83,10 @@ void ReviewRequest::pay() {
     hourPaid = HOUR;
 }
 
-unsigned int ReviewRequest::getHoursLeft() const {
+int ReviewRequest::getHoursLeft() const {
     return hoursRequested - hoursTested;
 }
 
-void ReviewRequest::test(unsigned int hours) {
+void ReviewRequest::test(int hours) {
     hoursTested += std::min(hours, hoursRequested - hoursTested);
 }

@@ -7,27 +7,27 @@
 
 class Employee {
 protected:
-    unsigned int id;
-    unsigned int wage;
-    unsigned int hoursWorked = 0;
+    int id;
+    int wage;
+    int hoursWorked = 0;
 
-    virtual unsigned int bonus() = 0;
+    virtual int bonus() = 0;
 
 public:
-    Employee(unsigned int n_id, unsigned int n_wage);
+    Employee(int n_id, int n_wage);
 
-    unsigned int getSalary();
+    int getSalary();
 
-    unsigned int getId();
+    int getId() const;
 };
 
 class Tester : public Employee {
     const std::set<Genre> genres;
 
-    unsigned int bonus() override;
+    int bonus() override;
 
 public:
-    Tester(unsigned int n_id, unsigned int n_wage,
+    Tester(int n_id, int n_wage,
            std::set<Genre> n_genres); // albo bez wage tylko zalozyc np 20 dla kazdego testera
 
     bool canTest(Genre genre);
@@ -37,12 +37,12 @@ public:
 class Manager : public Employee {
     std::list<ReviewRequest *> requests;
     std::list<Tester> testers;
-    unsigned int requestsCompleted = 0;
+    int requestsCompleted = 0;
 
-    unsigned int bonus() override;
+    int bonus() override;
 
 public:
-    Manager(unsigned int n_id, unsigned int n_wage, std::list<Tester> testers);
+    Manager(int n_id, int n_wage, std::list<Tester> testers);
 
     bool canTest(Genre genre);
 
