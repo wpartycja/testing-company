@@ -21,7 +21,15 @@ class Simulation{
 
     std::vector<Publisher> getPublishers();
 
+    std::string getPublisherName();
+
+    std::vector<Game> getGames();
+
     Manager getManager();
+
+    int randomTesterWage();
+
+    std::set<Genre> drawTesterGenres();
 
 public:
     Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
