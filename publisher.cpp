@@ -11,3 +11,7 @@ Publisher::Publisher(std::string n_name, std::vector<Game> n_games)
 std::vector<Game> Publisher::getGames() {
         return games;
 }
+
+void Publisher::addReviewRequest(ReviewRequest request) {
+        requests.push_back(request);
+}

@@ -16,6 +16,8 @@ public:
 
     std::vector<Game> getGames();
 
+    void addReviewRequest(ReviewRequest request);
+
     void nextHour();
 };
 
