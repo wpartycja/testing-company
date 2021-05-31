@@ -2,22 +2,52 @@
 
 #include <iostream>
 #include <random>
+#include <chrono>
+#include <thread>
 
 
 Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games)
     : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),  num_games(n_num_games), manager(Simulation::getManager())
     {
         publishers = Simulation::getPublishers();
+        request_id = 0;
     }
 
 
 void Simulation::start() {
+    std::string log = "Simulation started.\n";
 
     for (unsigned int h = 0; h < simulation_len; h++) {
         std::cout << "Hour " << h << ":\n";
-        manager.nextHour();
+        auto make_request = rand() % 4;
 
+        switch (make_request) {
+        case 0:
+            auto request = Simulation::drawReviewRequest();
+            std::cout << "Following request has been added:\n" << request;
+            manager.assignRequest(&request);
+            break;
+        }
+
+        manager.nextHour();
+        std::this_thread::sleep_for(std::chrono::milliseconds(300));
     }
+
+    std::cout << "\nSimulation has ended succesfully after " << simulation_len << "hours.";
+
+    Simulation::save(log);
+}
+
+ReviewRequest Simulation::drawReviewRequest() {
+    auto draw_publisher = rand() % publishers.size();
+    auto publisher = publishers[draw_publisher];
+    auto draw_game = rand() % publisher.getGames().size();
+    auto game = publisher.getGames()[draw_game];
+    auto draw_hours = rand() % 20 + 4;
+    auto request = ReviewRequest(request_id, game, draw_hours);
+    publisher.addReviewRequest(request);
+    request_id++;
+    return request;
 }
 
 std::vector<Publisher> Simulation::getPublishers() {
@@ -67,4 +97,8 @@ std::set<Genre> Simulation::drawTesterGenres() {
         genres.insert(genre);
     }
     return genres;
+}
+
+void Simulation::save(std::string sim_log) {
+                                    //TODO zapisywanie wyników symulacji
 }

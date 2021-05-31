@@ -18,6 +18,7 @@ class Simulation{
     const int num_testers;
     const int num_publishers;
     const int num_games;
+    int request_id;
 
     std::vector<Publisher> getPublishers();
 
@@ -30,6 +31,10 @@ class Simulation{
     int randomTesterWage();
 
     std::set<Genre> drawTesterGenres();
+
+    ReviewRequest drawReviewRequest();
+
+    void save(std::string sim_log);
 
 public:
     Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
