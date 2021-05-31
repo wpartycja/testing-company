@@ -7,13 +7,24 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <list>
+
 
 class Simulation{
 
-    std::vector<Publisher(std::string n_name, std::vector<Game> games, std::set<Genre> n_genres)> publishers;
+    std::vector<Publisher> publishers;
+    Manager manager;
+    const int simulation_len;
+    const int num_testers;
+    const int num_publishers;
+    const int num_games;
+
+    std::vector<Publisher> getPublishers();
+
+    Manager getManager();
 
 public:
-    Simulation();
+    Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
 
-    void nextDay();
+    void start();
 };
