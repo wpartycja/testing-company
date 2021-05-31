@@ -90,3 +90,15 @@ int ReviewRequest::getHoursLeft() const {
 void ReviewRequest::test(int hours) {
     hoursTested += std::min(hours, hoursRequested - hoursTested);
 }
+
+std::string ReviewRequest::display() {
+    std::string display = "";
+    display += "\tId of new rewiew request: " + std::to_string(id) + "\n";
+    display += "\tTitle of the game: " + ReviewRequest::getGame().getTitle() + "\n";
+    display += "\tRequested hours to test: " + std::to_string(hoursRequested) + "\n";
+    return display;
+}
+
+std::ostream& operator<< (std::ostream& output, ReviewRequest& const rewiew) {
+    return output << rewiew.display();
+}

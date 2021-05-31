@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <string>
 #include <vector>
 
@@ -62,4 +63,8 @@ public:
     int getHoursLeft() const;
 
     void test(int hours);
+
+    std::string display();
 };
+
+std::ostream& operator<< (std::ostream& output, ReviewRequest& const rewiew)
