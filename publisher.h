@@ -14,6 +14,8 @@ class Publisher {
 public:
     Publisher(std::string n_name, std::vector<Game> n_games);
 
+    std::vector<Game> getGames();
+
     void nextHour();
 };
 
