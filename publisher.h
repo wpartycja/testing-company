@@ -12,7 +12,7 @@ class Publisher {
     std::set<Genre> genres;
 
 public:
-    Publisher(std::string n_name, std::vector<Game> n_games, std::set<Genre> n_genres);
+    Publisher(std::string n_name, std::vector<Game> n_games);
 
     void nextHour();
 };
