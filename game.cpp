@@ -1,7 +1,6 @@
 #include "game.h"
 
-//Time unit
-int HOUR;
+
 
 
 //Game
@@ -78,9 +77,9 @@ bool ReviewRequest::isPaid() const {
     return paid;
 }
 
-void ReviewRequest::pay() {
+void ReviewRequest::pay(int hour) {
     paid = true;
-    hourPaid = HOUR;
+    hourPaid = hour;
 }
 
 int ReviewRequest::getHoursLeft() const {
@@ -99,6 +98,6 @@ std::string ReviewRequest::display() {
     return display;
 }
 
-std::ostream& operator<< (std::ostream& output, ReviewRequest& const rewiew) {
+std::ostream& operator<< (std::ostream& output, ReviewRequest& rewiew) {
     return output << rewiew.display();
 }

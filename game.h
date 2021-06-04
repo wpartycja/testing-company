@@ -59,7 +59,7 @@ public:
 
     bool isPaid() const;
 
-    void pay(); // mark this request as paid
+    void pay(int hour); // mark this request as paid
     int getHoursLeft() const;
 
     void test(int hours);
@@ -67,4 +67,4 @@ public:
     std::string display();
 };
 
-std::ostream& operator<< (std::ostream& output, ReviewRequest& const rewiew)
+std::ostream& operator<< (std::ostream& output, ReviewRequest& rewiew);
