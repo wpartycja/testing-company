@@ -8,6 +8,7 @@
 #include <vector>
 #include <set>
 #include <list>
+#include <stack>
 
 
 class Simulation{
@@ -20,11 +21,19 @@ class Simulation{
     const int num_games;
     int request_id;
 
+    std::stack<std::string> gameDevs;
+    std::stack<std::string> gameNames;
+    int all_games;
+
     std::vector<Publisher> getPublishers();
 
     std::string getPublisherName();
 
-    std::vector<Game> getGames();
+    std::vector<Game> getGames(std::string devName);
+
+    std::string getGameName();
+
+    int getGameId();
 
     Manager getManager();
 
@@ -33,6 +42,10 @@ class Simulation{
     std::set<Genre> drawTesterGenres();
 
     ReviewRequest drawReviewRequest();
+
+    Genre randomGenre();
+
+    void readData();
 
     void save(std::string sim_log);
 
