@@ -1,9 +1,11 @@
 #include <iostream>
 #include "employee.h"
+#include "simulation.h"
 #include <chrono>
 #include <thread>
 
 int main() {
+    /*
     std::set<Genre> tester1Genres = {sports, MMO, action, sandbox};
     std::set<Genre> tester2Genres = {sandbox, sports};
     auto tester1 = Tester(1, 20, tester1Genres);
@@ -27,6 +29,10 @@ int main() {
         manager1.nextHour();
         std::this_thread::sleep_for(std::chrono::milliseconds(300));
     }
+    /**/
+
+    auto sim = Simulation(80, 30, 2, 6);
+    sim.start();
 
     return 0;
 }
