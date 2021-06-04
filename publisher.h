@@ -1,9 +1,11 @@
 #pragma once
 
+#include "game.h"
+
 #include <string>
 #include <vector>
 #include <set>
-#include "game.h"
+
 
 class Publisher {
     std::string name;
@@ -18,6 +20,4 @@ public:
 
     void addReviewRequest(ReviewRequest request);
 
-    void nextHour();
 };
-
