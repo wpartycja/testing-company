@@ -10,6 +10,8 @@
 //Employee
 
 //constructor
+Employee::Employee() {}
+
 Employee::Employee(const int n_id, const int n_wage) : id(n_id), wage(n_wage), hoursWorked(0) {}
 
 //get functions
@@ -40,6 +42,7 @@ bool Tester::canTest(Genre genre) {
 
 
 //Manager
+Manager::Manager() {};
 
 Manager::Manager(int n_id, int n_wage, std::list<Tester> testers)
         : Employee(n_id, n_wage), testers(std::move(testers)) {};

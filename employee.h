@@ -14,6 +14,8 @@ protected:
     virtual int bonus() = 0;
 
 public:
+    Employee();
+
     Employee(int n_id, int n_wage);
 
     int getSalary();
@@ -42,6 +44,8 @@ class Manager : public Employee {
     int bonus() override;
 
 public:
+    Manager();
+
     Manager(int n_id, int n_wage, std::list<Tester> testers);
 
     bool canTest(Genre genre);
