@@ -50,7 +50,7 @@ public:
 
     bool canTest(Genre genre);
 
-    void assignRequest(ReviewRequest *request);
+    std::string assignRequest(ReviewRequest *request);
 
-    void nextHour();
+    std::string nextHour();
 };

@@ -51,12 +51,11 @@ int Manager::bonus() {
     return requestsCompleted * 50;
 }
 
-void Manager::nextHour() {
-
+std::string Manager::nextHour() {
+    std::string log = "";
     if (requests.empty()) {
         // there is nothing to do
-        std::cout << "Manager: there is nothing to do\n";
-        return;
+        return "Manager: there is nothing to do\n";
     }
 
     std::list<Tester> freeTesters = testers;
@@ -66,8 +65,8 @@ void Manager::nextHour() {
     for (auto request :requests) {
 
         if (!this->canTest(request->getGame().getGenre())) {
-            std::cout << request->getGame().getTitle() << ": we don't have specialist to this game genre,"
-                                                          " request has been rejected." << std::endl;
+            log += request->getGame().getTitle() + ": we don't have specialist to this game genre,";
+            log += " request has been rejected.\n";
             readyRequests.push_back(request);
         }
 
@@ -99,12 +98,11 @@ void Manager::nextHour() {
         // assign testers and print result
         request->test((int) competentTesters.size());
         if (request->getHoursLeft() == 0) {
-            std::cout << "Manager: " << request->getGame().getTitle() << " completed!\n";
+            log += "Manager: " + request->getGame().getTitle() + " completed!\n";
             readyRequests.push_back(request);
         } else {
-            std::cout << "Manager: " << request->getGame().getTitle() << " tested for " << competentTesters.size()
-                      << "h. "
-                      << request->getHoursLeft() << "h left.\n";
+            log += "Manager: " + request->getGame().getTitle() + " tested for " + std::to_string(competentTesters.size());
+            log += "h. " + std::to_string(request->getHoursLeft()) + "h left.\n";
         }
 
         competentTesters.clear();
@@ -114,7 +112,7 @@ void Manager::nextHour() {
     for (auto request : readyRequests) {
         requests.remove(request);
     }
-
+    return log;
 }
 
 
@@ -129,7 +127,7 @@ bool Manager::canTest(const Genre genre) {
     return false;
 }
 
-void Manager::assignRequest(ReviewRequest *request) {
+std::string Manager::assignRequest(ReviewRequest *request) {
     requests.push_back(request);
 
     //counting the prize
@@ -152,8 +150,9 @@ void Manager::assignRequest(ReviewRequest *request) {
     int price = pricesPerHour.count(specialistNr) ? pricesPerHour[specialistNr] : 20;
     request->setPrice(price);
 
-    std::cout << "Manger: assigned " << request->getGame().getTitle() << "\n" <<
-              "Price of testing this request is: " << request->getPrice() << std::endl;
+    std::string log = "Manger: assigned " + request->getGame().getTitle();
+    log += "\nPrice of testing this request is: " + std::to_string(request->getPrice()) + "\n";
+    return log;
 }
 
 
