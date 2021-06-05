@@ -20,4 +20,5 @@ public:
 
     void addReviewRequest(ReviewRequest request);
 
+    std::string display();
 };
