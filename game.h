@@ -33,7 +33,11 @@ public:
     float getAvgRating();
 
     void addRating(float rating);
+
+    std::string display();
 };
+
+std::ostream& operator<< (std::ostream& output, Game& game);
 
 class ReviewRequest {
     int id;

@@ -40,6 +40,17 @@ void Game::addRating(float rating) {
     ratings.push_back(rating);
 }
 
+std::string Game::display() {
+    std::string display = "";
+    display += "\tGame title: " + title + "\t\t\tGame ID: " + std::to_string(id);
+    display += "\n\tPublisher: " + publisher + "\t\tGenre: " + std::to_string(genre) + "\n";
+    return display;
+}
+
+std::ostream& operator<< (std::ostream& output, Game& game) {
+    return output << game.display();
+}
+
 
 //ReviewRequest
 
