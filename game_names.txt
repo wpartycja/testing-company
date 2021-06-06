@@ -1,37 +1,3 @@
-0verflow
-Activision
-Big Huge Games
-Black Rock Studio
-Blizzard Entertainment
-Bloober Team
-CD Projekt Red
-Codemasters
-Coffee Stain Studios
-Crytek
-Electronic Arts
-Epic Games
-Interplay Entertainment
-Ion Storm
-Kiloo Games
-LucasArts
-Microsoft Casual Games
-Milestone srl
-Mojang
-NCSoft
-Nintendo
-Omega Force
-Respawn Entertainment
-Riot Games
-Rockstar Games
-Sega
-Techland
-Teyon
-Ubisoft
-Valve
-Westwood Studios
-Xbox Game Studios
-
-
 Minecraft
 League of Legends
 Counter-Strike: Global Offensive

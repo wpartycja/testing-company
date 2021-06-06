@@ -7,8 +7,8 @@
 
 class Employee {
 protected:
-    int id;
-    int wage;
+    int id{};
+    int wage{};
     int hoursWorked = 0;
 
     virtual int bonus() = 0;
@@ -37,20 +37,20 @@ public:
 };
 
 class Manager : public Employee {
-    std::list<ReviewRequest *> requests;
-    std::list<Tester> testers;
+    std::list<std::shared_ptr<ReviewRequest>> requests;
+    std::list<std::shared_ptr<Tester>> testers;
     int requestsCompleted = 0;
 
     int bonus() override;
 
 public:
-    Manager();
+    Manager(int n_id, int n_wage, std::list<std::shared_ptr<Tester>> testers);
 
-    Manager(int n_id, int n_wage, std::list<Tester> testers);
+    Manager();
 
     bool canTest(Genre genre);
 
-    std::string assignRequest(ReviewRequest *request);
-
     std::string nextHour();
+
+    std::string assignRequest(const std::shared_ptr<ReviewRequest> &request);
 };

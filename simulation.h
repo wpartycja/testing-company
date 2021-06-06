@@ -11,45 +11,36 @@
 #include <stack>
 
 
-class Simulation{
+class Simulation {
 
-    std::vector<Publisher> publishers;
+    std::vector<std::shared_ptr<Publisher>> publishers;
     Manager manager;
+
     const int simulation_len;
     const int num_testers;
     const int num_publishers;
     const int num_games;
-    int request_id;
+    int requestId;
+    int gameId;
 
-    std::stack<std::string> gameDevs;
+    std::stack<std::string> publisherNames;
     std::stack<std::string> gameNames;
-    int all_games;
 
-    std::vector<Publisher> getPublishers();
+
+    static Genre getGenre();
+
+    static int getTesterWage();
+
+    static std::set<Genre> getTesterGenres();
 
     std::string getPublisherName();
 
-    std::vector<Game> getGames(std::string devName);
-
     std::string getGameName();
 
-    int getGameId();
-
-    Manager getManager();
-
-    int randomTesterWage();
-
-    std::set<Genre> drawTesterGenres();
-
-    ReviewRequest drawReviewRequest();
-
-    Genre randomGenre();
-
-    void readData();
-
-    void save(std::string sim_log);
+    std::shared_ptr<ReviewRequest> getReviewRequest();
 
 public:
+
     Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
 
     void start();

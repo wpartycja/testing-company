@@ -6,11 +6,12 @@
 #include <list>
 #include <algorithm>
 #include <map>
+#include <sstream>
 
 //Employee
 
 //constructor
-Employee::Employee() {}
+Employee::Employee() = default;
 
 Employee::Employee(const int n_id, const int n_wage) : id(n_id), wage(n_wage), hoursWorked(0) {}
 
@@ -23,12 +24,11 @@ int Employee::getId() const {
     return id;
 }
 
-
 //Tester
 
 //constructor
 Tester::Tester(int n_id, int n_wage, std::set<Genre> n_genres)
-        : Employee(n_id, n_wage), genres(std::move(n_genres)) {};
+        : Employee(n_id, n_wage), genres(std::move(n_genres)) {}
 
 int Tester::bonus() {
     return (int) genres.size() * 20;
@@ -40,38 +40,35 @@ bool Tester::canTest(Genre genre) {
 }
 
 
-
 //Manager
-Manager::Manager() {};
 
-Manager::Manager(int n_id, int n_wage, std::list<Tester> testers)
-        : Employee(n_id, n_wage), testers(std::move(testers)) {};
+Manager::Manager() = default;
+
+Manager::Manager(int n_id, int n_wage, std::list<std::shared_ptr<Tester>> testers)
+        : Employee(n_id, n_wage), testers(std::move(testers)) {}
 
 int Manager::bonus() {
     return requestsCompleted * 50;
 }
 
 std::string Manager::nextHour() {
-    std::string log = "";
+    std::ostringstream progress;
+    std::ostringstream info;
     if (requests.empty()) {
         // there is nothing to do
-        return "Manager: there is nothing to do\n";
+        return "Waiting for requests\n";
     }
 
-    std::list<Tester> freeTesters = testers;
-    std::vector<Tester> competentTesters = {};
-    std::vector<ReviewRequest *> readyRequests = {};
+    std::list<std::shared_ptr<Tester>> freeTesters = testers;
+    std::vector<std::shared_ptr<Tester>> competentTesters = {};
+    std::vector<std::shared_ptr<ReviewRequest>> readyRequests = {};
 
-    for (auto request :requests) {
+    for (const auto &request :requests) {
 
-        if (!this->canTest(request->getGame().getGenre())) {
-            log += request->getGame().getTitle() + ": we don't have specialist to this game genre,";
-            log += " request has been rejected.\n";
-            readyRequests.push_back(request);
-        }
+        progress << "(" << request->getId() << ") " << request->getGame()->getTitle() << "\n";
 
         // creating a group of testers to one game
-        for (auto tester :freeTesters) {
+        for (const auto &tester :freeTesters) {
             // checking if don't have more testers than it is needed
             if (competentTesters.size() == request->getHoursLeft()) {
                 competentTesters.push_back(tester);
@@ -79,80 +76,87 @@ std::string Manager::nextHour() {
             }
 
             // separate competent testers
-            if (tester.canTest(request->getGame().getGenre())) {
+            if (tester->canTest(request->getGame()->getGenre())) {
                 competentTesters.push_back(tester);
             }
         }
 
         if (competentTesters.empty()) {
+            progress << "[";
+            for (int i = 0; i < request->getHoursTested(); i++)progress << "#";
+            for (int i = 0; i < request->getHoursLeft(); i++)progress << " ";
+            progress << "] Waiting for testers\n\n";
             continue;
         }
 
 
         // cleaning to check how many free testers we have now
         for (const auto &tester :competentTesters) {
-            int tester_id = tester.getId();
-            freeTesters.remove_if([tester_id](const Tester &freeTester) { return tester_id == freeTester.getId(); });
+            int tester_id = tester->getId();
+            freeTesters.remove_if([tester_id](const std::shared_ptr<Tester> &freeTester) {
+                return tester_id == freeTester->getId();
+            });
         }
 
         // assign testers and print result
-        request->test((int) competentTesters.size());
-        if (request->getHoursLeft() == 0) {
-            log += "Manager: " + request->getGame().getTitle() + " completed!\n";
-            readyRequests.push_back(request);
-        } else {
-            log += "Manager: " + request->getGame().getTitle() + " tested for " + std::to_string(competentTesters.size());
-            log += "h. " + std::to_string(request->getHoursLeft()) + "h left.\n";
-        }
+        progress << "[";
+        for (int i = 0; i < request->getHoursTested(); i++)progress << "#";
+        int testedFor = request->test((int) competentTesters.size());
+        for (int i = 0; i < testedFor; i++)progress << "+";
+        for (int i = 0; i < request->getHoursLeft(); i++)progress << " ";
+        progress << "] ";
 
+        if (request->getHoursLeft() == 0) {
+            readyRequests.push_back(request);
+            progress << " Completed";
+        } else {
+            progress << request->getHoursTested() << "/" << request->getHoursRequested() << "h (+" << testedFor << "h)";
+        }
+        progress << "\n\n";
         competentTesters.clear();
     }
 
     // cleaning to check how many free testers we have now
-    for (auto request : readyRequests) {
+    for (const auto &request : readyRequests) {
         requests.remove(request);
     }
-    return log;
+    return progress.str() + info.str();
 }
 
+std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request) {
 
-//checking if manager has specialists to test this game
-bool Manager::canTest(const Genre genre) {
-
-    for (auto tester: testers) {
-        if (tester.canTest(genre)) {
-            return true;
-        }
-    }
-    return false;
-}
-
-std::string Manager::assignRequest(ReviewRequest *request) {
-    requests.push_back(request);
-
-    //counting the prize
+    std::ostringstream log;
 
     //counting how many tester can test that game
     int specialistNr = 0;
-    for (auto tester :testers) {
-        if (tester.canTest(request->getGame().getGenre())) {
+    for (const auto &tester :testers) {
+        if (tester->canTest(request->getGame()->getGenre())) {
             specialistNr++;
         }
     }
 
-    // price is cheaper if the manager has more qualified testers to this genre
+    if (specialistNr == 0) {
+        log << " • Rejected request (" << request->getId() << ") " << request->getGame()->getTitle()
+            << "no testers for this genre\n";
+        return log.str();
+    }
+
+    // pricePerHour is cheaper if the manager has more qualified testers to this genre
     std::map<int, int> pricesPerHour{{1, 100},
                                      {2, 70},
                                      {3, 50},
                                      {4, 30},
                                      {5, 30}};
 
-    int price = pricesPerHour.count(specialistNr) ? pricesPerHour[specialistNr] : 20;
-    request->setPrice(price);
+    int pricePerHour = pricesPerHour.count(specialistNr) ? pricesPerHour[specialistNr] : 20;
+    int totalPrice = pricePerHour * request->getHoursRequested();
+    request->setPrice(totalPrice);
 
-    std::string log = "Manger: assigned " + request->getGame().getTitle();
-    log += "\nPrice of testing this request is: " + std::to_string(request->getPrice()) + "\n";
-    return log;
+    requests.push_back(request);
+
+    log << " • New request (" << request->getId() << ") : " << request->getGame()->getTitle() << "\n";
+    log << "    ‣ Price: " << request->getHoursRequested() << "h * " << pricePerHour << "zl/h = "
+        << totalPrice << "zl\n";
+    return log.str();
 }
-
 

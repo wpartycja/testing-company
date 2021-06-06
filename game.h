@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <memory>
 
 enum Genre {
     action, adventure, action_adventure, RPG, simulation,
@@ -16,19 +17,16 @@ class Game {
     const int id;
     const Genre genre;
     const std::string title;
-    const std::string publisher; // czy gra powinna miec publishera? i tak to publisher(jako obiekt) przechowuje gry
     std::vector<float> ratings;
 
 public:
-    Game(int n_id, Genre n_genre, std::string n_title, std::string n_publisher);
+    Game(int n_id, Genre n_genre, std::string n_title);
 
     int getId() const;
 
     Genre getGenre();
 
-    std::string getTitle();
-
-    std::string getPublisher();
+    std::string getTitle() const;
 
     float getAvgRating();
 
@@ -37,11 +35,11 @@ public:
     std::string display();
 };
 
-std::ostream& operator<< (std::ostream& output, Game& game);
+std::ostream &operator<<(std::ostream &output, Game &game);
 
 class ReviewRequest {
     int id;
-    Game game;
+    std::shared_ptr<Game> game;
     int hoursTested = 0;
     int hourPaid = 0;
     bool paid = false;
@@ -49,13 +47,17 @@ class ReviewRequest {
     int price = 0;
 
 public:
-    ReviewRequest(int n_id, Game n_game, int n_hoursRequested);
+    ReviewRequest(int n_id, std::shared_ptr<Game> n_game, int n_hoursRequested);
 
-    Game getGame() const;
+    std::shared_ptr<Game> getGame() const;
 
     int getId() const;
 
     int getHoursRequested() const;
+
+    int getHoursTested() const;
+
+    int getHoursLeft() const;
 
     int getPrice() const; // get price
 
@@ -64,11 +66,10 @@ public:
     bool isPaid() const;
 
     void pay(int hour); // mark this request as paid
-    int getHoursLeft() const;
 
-    void test(int hours);
+    int test(int hours);
 
     std::string display();
 };
 
-std::ostream& operator<< (std::ostream& output, ReviewRequest& rewiew);
+std::ostream &operator<<(std::ostream &output, ReviewRequest &rewiew);

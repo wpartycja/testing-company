@@ -31,7 +31,7 @@ int main() {
     }
     /**/
 
-    auto sim = Simulation(80, 30, 2, 6);
+    auto sim = Simulation(80, 20, 2, 10);
     sim.start();
 
     return 0;

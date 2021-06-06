@@ -6,104 +6,82 @@
 #include <thread>
 #include <fstream>
 
-std::string LOAD = "data.txt";
-std::string SAVE = "save.txt";
-
-
 Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games)
-    : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),  num_games(n_num_games)
-    {
-        std::string log = "\n";
-        manager = Simulation::getManager();
-        std::cout<<"Manager created succesfully with "<< std::to_string(num_testers)<<" testers.\n"<<std::endl;
-        log += "Manager created succesfully with " + std::to_string(num_testers) + " testers.\n";
-        Simulation::readData();
-        std::cout<<"Data loaded succesfully."<<std::endl;
-        std::cout<<"\t"<<gameDevs.size()<<" game developers loaded."<<std::endl;
-        std::cout<<"\t"<<gameNames.size()<<" games loaded.\n"<<std::endl;
-        log += "\nData loaded succesfully.\n\t" + std::to_string(gameDevs.size());
-        log += " game developers loaded.\n\t" + std::to_string(gameNames.size()) + " games loaded.\n";
-        publishers = Simulation::getPublishers();
-        std::cout<<"Publishers created succesfully."<<std::endl;
-        log += "\nPublishers created succesfully.\n\n";
-        Simulation::save(log);
-        request_id = 0;
+        : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),
+          num_games(n_num_games), requestId(0), gameId(0) {
+
+    // load game and publisher names from files
+
+    std::fstream file;
+    std::string name;
+
+    file.open("game_names.txt", std::ios::in);
+    while (getline(file, name)) gameNames.push(name);
+    file.close();
+
+    file.open("publisher_names.txt", std::ios::in);
+    while (getline(file, name)) publisherNames.push(name);
+    file.close();
+
+    // create publishers
+    for (int i = 0; i < num_publishers; i++) {
+
+        // create games for each publisher
+        std::vector<std::shared_ptr<Game>> publisherGames;
+        auto number_of_games = num_games / num_publishers;
+        for (int j = 0; j < number_of_games; j++) {
+            auto game = std::make_shared<Game>(gameId++, getGenre(), getGameName());
+            publisherGames.push_back(game);
+        }
+
+        auto publisher = std::make_shared<Publisher>(getPublisherName(), publisherGames);
+        publishers.push_back(publisher);
     }
+
+    // create manager with testers
+    std::list<std::shared_ptr<Tester>> testers;
+    for (int i = 0; i < num_testers; i++) {
+        auto tester = std::make_shared<Tester>(i, getTesterWage(), getTesterGenres());
+        testers.push_back(tester);
+    }
+
+    manager = Manager(1, 30, testers);
+}
 
 
 void Simulation::start() {
-    std::string log;
-    std::cout << "\n\nSimulation started.\n";
-    log +=  "Simulation started.\n";
     for (unsigned int h = 0; h < simulation_len; h++) {
+        std::cout << "\033[2J\033[0;0H"; // scroll terminal
         std::cout << "Hour " << h << ":\n";
-        log += "Hour " + std::to_string(h) +  ":\n";
-        auto make_request = rand() % 2;
-        switch (make_request) {
-        case 0:
-            auto request = Simulation::drawReviewRequest();
-            std::cout << "Following request has been added:\n" << request;
-            log += "Following request has been added:\n" + request.display();
-            auto assign = manager.assignRequest(&request);
-            std::cout << assign;
-            log += assign;
-            break;
+        std::string requestsLog;
+
+        if (rand() % 5 == 0) {
+            requestsLog = manager.assignRequest(getReviewRequest());
         }
 
-        auto nexth = manager.nextHour();
-        std::cout << nexth;
-        log += nexth;
-        std::this_thread::sleep_for(std::chrono::milliseconds(300));
-        if (h % 2 == 0) {Simulation::save(log); log = "";}
+        std::string testingLog = manager.nextHour();
+
+        std::cout << testingLog << requestsLog;
+//        std::this_thread::sleep_for(std::chrono::milliseconds(300));
+        std::cin.get();
     }
-
-    std::cout << "\nSimulation has ended succesfully after " << simulation_len << " hours.";
-    log += "\nSimulation has ended succesfully after " + std::to_string(simulation_len) + " hours.";
-
-    Simulation::save(log);
 }
 
-ReviewRequest Simulation::drawReviewRequest() {
-    auto draw_publisher = rand() % publishers.size();
-    auto publisher = publishers[draw_publisher];
-    auto draw_game = rand() % publisher.getGames().size();
-    auto game = publisher.getGames()[draw_game];
-    auto draw_hours = rand() % 20 + 4;
-    auto request = ReviewRequest(request_id, game, draw_hours);
-    publisher.addReviewRequest(request);
-    request_id++;
+std::shared_ptr<ReviewRequest> Simulation::getReviewRequest() {
+    auto publisher = publishers[rand() % publishers.size()];
+    auto game = publisher->getGames()[rand() % publisher->getGames().size()];
+    auto hours = rand() % 10 + 10;
+    auto request = std::make_shared<ReviewRequest>(requestId++, game, hours);
+    publisher->addReviewRequest(request);
     return request;
 }
 
-std::vector<Publisher> Simulation::getPublishers() {
-    std::vector<Publisher> new_pub;
-    std::string log = "";
-    for (int i = 0; i < num_publishers; i++) {
-        auto publisherName = Simulation::getPublisherName();
-        auto publisher = Publisher(publisherName, Simulation::getGames(publisherName));
-        log += publisher.display();
-        new_pub.push_back(publisher);
-    }
-    std::cout<<log;
-    Simulation::save(log);
-    return new_pub;
-}
-
 std::string Simulation::getPublisherName() {
-    auto name = gameDevs.top();
-    gameDevs.pop();
+    auto name = publisherNames.top();
+    publisherNames.pop();
     return name;
 }
 
-std::vector<Game> Simulation::getGames(std::string devName) {
-    std::vector<Game> games;
-    auto number_of_games = num_games / num_publishers;
-    for (int i = 0; i < number_of_games; i++) {
-        auto game = Game(Simulation::getGameId(), Simulation::randomGenre(), Simulation::getGameName(), devName);
-        games.push_back(game);
-    }
-    return games;
-}
 
 std::string Simulation::getGameName() {
     auto name = gameNames.top();
@@ -111,63 +89,19 @@ std::string Simulation::getGameName() {
     return name;
 }
 
-int Simulation::getGameId() {
-    return all_games - gameNames.size();
-}
-
-Manager Simulation::getManager() {
-    std::string log = "";
-    log += "Generated testers:\n";
-    std::list<Tester> testers;
-
-    for (int i = 0; i < num_testers; i++) {
-        auto tester = Tester(i, Simulation::randomTesterWage(), Simulation::drawTesterGenres());
-        log += "\t" + std::to_string(i) + ". tester generated.\n";
-        testers.push_back(tester);
-    }
-    std::cout<<log;
-    Simulation::save(log);
-    auto new_manager = Manager(1, 30, testers);
-    return new_manager;
-}
-
-int Simulation::randomTesterWage() {
+int Simulation::getTesterWage() {
     return rand() % 10 + 15;
 }
 
-std::set<Genre> Simulation::drawTesterGenres() {
+std::set<Genre> Simulation::getTesterGenres() {
     std::set<Genre> genres;
     auto number_of_genres = rand() % 3 + 2;
     for (int i = 0; i < number_of_genres; i++) {
-        genres.insert(Simulation::randomGenre());
+        genres.insert(getGenre());
     }
     return genres;
 }
 
-Genre Simulation::randomGenre(){
-    auto draw_genre = rand() % 16;
-    auto genre = Genre(draw_genre);
-    return genre;
-}
-
-void Simulation::readData() {
-    std::fstream file;
-    file.open(LOAD, std::ios::in);
-    int counter = 1;
-    std::string name;
-    while(getline(file, name))
-    {
-        if (counter < 33) gameDevs.push(name);
-        if (counter > 34) gameNames.push(name);
-        counter++;
-    }
-    file.close();
-    all_games = gameNames.size();
-}
-
-void Simulation::save(std::string sim_log) {
-    std::fstream file;
-    file.open(SAVE, std::ios::out | std::ios::app);
-    file << sim_log;
-    file.close();
+Genre Simulation::getGenre() {
+    return Genre(rand() % 16);
 }

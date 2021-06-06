@@ -1,13 +1,15 @@
 #include "game.h"
 
+#include <utility>
+
 
 
 
 //Game
 
 //constructor
-Game::Game(int n_id, Genre n_genre, std::string n_title, std::string n_publisher) :
-        id(n_id), genre(n_genre), title(std::move(n_title)), publisher(std::move(n_publisher)), ratings() {}
+Game::Game(int n_id, Genre n_genre, std::string n_title) :
+        id(n_id), genre(n_genre), title(std::move(n_title)), ratings() {}
 
 //get functions
 int Game::getId() const {
@@ -18,12 +20,8 @@ Genre Game::getGenre() {
     return genre;
 }
 
-std::string Game::getTitle() {
+std::string Game::getTitle() const {
     return title;
-}
-
-std::string Game::getPublisher() {
-    return publisher;
 }
 
 float Game::getAvgRating() {
@@ -43,11 +41,10 @@ void Game::addRating(float rating) {
 std::string Game::display() {
     std::string display = "";
     display += "\tGame title: " + title + "\t\t\tGame ID: " + std::to_string(id);
-    display += "\n\tPublisher: " + publisher + "\t\tGenre: " + std::to_string(genre) + "\n";
     return display;
 }
 
-std::ostream& operator<< (std::ostream& output, Game& game) {
+std::ostream &operator<<(std::ostream &output, Game &game) {
     return output << game.display();
 }
 
@@ -55,12 +52,12 @@ std::ostream& operator<< (std::ostream& output, Game& game) {
 //ReviewRequest
 
 //constructor
-ReviewRequest::ReviewRequest(int n_id, Game n_game, int n_hoursRequested) :
+ReviewRequest::ReviewRequest(int n_id, std::shared_ptr<Game> n_game, int n_hoursRequested) :
         id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested) {}
 
 
 //get function
-Game ReviewRequest::getGame() const {
+std::shared_ptr<Game> ReviewRequest::getGame() const {
     return game;
 }
 
@@ -78,6 +75,14 @@ int ReviewRequest::getHoursRequested() const {
     return hoursRequested;
 }
 
+int ReviewRequest::getHoursTested() const {
+    return hoursTested;
+}
+
+int ReviewRequest::getHoursLeft() const {
+    return hoursRequested - hoursTested;
+}
+
 //set function
 void ReviewRequest::setPrice(int n_price) {
     price = n_price;
@@ -93,22 +98,20 @@ void ReviewRequest::pay(int hour) {
     hourPaid = hour;
 }
 
-int ReviewRequest::getHoursLeft() const {
-    return hoursRequested - hoursTested;
-}
-
-void ReviewRequest::test(int hours) {
-    hoursTested += std::min(hours, hoursRequested - hoursTested);
+int ReviewRequest::test(int hours) {
+    int testedFor = std::min(hours, hoursRequested - hoursTested);
+    hoursTested += testedFor;
+    return testedFor;
 }
 
 std::string ReviewRequest::display() {
     std::string display = "";
     display += "\tId of new rewiew request: " + std::to_string(id) + "\n";
-    display += "\tTitle of the game: " + ReviewRequest::getGame().getTitle() + "\n";
+    display += "\tTitle of the game: " + ReviewRequest::getGame()->getTitle() + "\n";
     display += "\tRequested hours to test: " + std::to_string(hoursRequested) + "\n";
     return display;
 }
 
-std::ostream& operator<< (std::ostream& output, ReviewRequest& rewiew) {
+std::ostream &operator<<(std::ostream &output, ReviewRequest &rewiew) {
     return output << rewiew.display();
 }
