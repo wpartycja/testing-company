@@ -1,10 +1,13 @@
 #include "simulation.h"
 
 #include <iostream>
+#include <cstdlib>
 #include <random>
 #include <chrono>
 #include <thread>
 #include <fstream>
+#include <sstream>
+
 
 Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games)
         : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),
@@ -51,19 +54,25 @@ Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publi
 
 void Simulation::start() {
     for (unsigned int h = 0; h < simulation_len; h++) {
-        std::cout << "\033[2J\033[0;0H"; // scroll terminal
-        std::cout << "Hour " << h << ":\n";
-        std::string requestsLog;
+
+        std::ostringstream requestsLog;
 
         if (rand() % 5 == 0) {
-            requestsLog = manager.assignRequest(getReviewRequest());
+            requestsLog << manager.assignRequest(getReviewRequest());
         }
 
-        std::string testingLog = manager.nextHour();
+        std::ostringstream testingLog;
+        testingLog << "Hour " << h << ":\n"  << requestsLog.str() << manager.nextHour();
 
-        std::cout << testingLog << requestsLog;
+        std::cout << testingLog.str();
+        save(testingLog.str());
 //        std::this_thread::sleep_for(std::chrono::milliseconds(300));
-        std::cin.get();
+
+        #ifdef WIN32
+            std::system("pause");
+        #else
+            std::system("read");
+        #endif
     }
 }
 
@@ -104,4 +113,11 @@ std::set<Genre> Simulation::getTesterGenres() {
 
 Genre Simulation::getGenre() {
     return Genre(rand() % 16);
+}
+
+void Simulation::save(std::string sim_log) {
+    std::fstream file;
+    file.open("save.txt", std::ios::out | std::ios::app);
+    file << sim_log;
+    file.close();
 }

@@ -39,6 +39,8 @@ class Simulation {
 
     std::shared_ptr<ReviewRequest> getReviewRequest();
 
+    void save(std::string);
+
 public:
 
     Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
