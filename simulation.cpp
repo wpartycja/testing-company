@@ -62,7 +62,7 @@ void Simulation::start() {
         }
 
         std::ostringstream testingLog;
-        testingLog << "Hour " << h << ":\n"  << requestsLog.str() << manager.nextHour();
+        testingLog << "Hour " << h << ":\n"  << requestsLog.str() << manager.nextHour(h);
 
         std::cout << testingLog.str();
         save(testingLog.str());
@@ -74,6 +74,16 @@ void Simulation::start() {
             std::system("read");
         #endif
     }
+
+    std::cout << summary();
+    save(summary());
+}
+
+std::string Simulation::summary() {
+    std::ostringstream summary;
+    summary << "\n\n\n\t***Summary***\n\nSimulation duration: " << simulation_len <<"h.\nNumber of testers: " << num_testers
+            << "\n\nManager:\n" << manager.summary();
+    return summary.str();
 }
 
 std::shared_ptr<ReviewRequest> Simulation::getReviewRequest() {
@@ -99,7 +109,7 @@ std::string Simulation::getGameName() {
 }
 
 int Simulation::getTesterWage() {
-    return rand() % 10 + 15;
+    return rand() % 15 + 10;
 }
 
 std::set<Genre> Simulation::getTesterGenres() {

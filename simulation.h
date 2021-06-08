@@ -41,6 +41,8 @@ class Simulation {
 
     void save(std::string);
 
+    std::string summary();
+
 public:
 
     Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
