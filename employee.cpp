@@ -136,7 +136,7 @@ std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request
     }
 
     if (specialistNr == 0) {
-        log << " • Rejected request (" << request->getId() << ") " << request->getGame()->getTitle()
+        log << "\tRejected request (" << request->getId() << ") " << request->getGame()->getTitle()
             << "no testers for this genre\n";
         return log.str();
     }
@@ -154,9 +154,9 @@ std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request
 
     requests.push_back(request);
 
-    log << " • New request (" << request->getId() << ") : " << request->getGame()->getTitle() << "\n";
-    log << "    ‣ Price: " << request->getHoursRequested() << "h * " << pricePerHour << "zl/h = "
-        << totalPrice << "zl\n";
+    log << "\t|New request (" << request->getId() << ") : " << request->getGame()->getTitle() << "\n";
+    log << "\t|Price: " << request->getHoursRequested() << "h * " << pricePerHour << "zl/h = "
+        << totalPrice << "zl\n\n";
     return log.str();
 }
 
