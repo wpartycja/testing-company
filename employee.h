@@ -21,6 +21,8 @@ public:
     int getSalary();
 
     int getId() const;
+
+    void addHoursWorked(int hours);
 };
 
 class Tester : public Employee {
@@ -39,7 +41,7 @@ public:
 class Manager : public Employee {
     std::list<std::shared_ptr<ReviewRequest>> requests;
     std::list<std::shared_ptr<Tester>> testers;
-    int requestsCompleted = 0;
+    std::vector<std::shared_ptr<ReviewRequest>> requestsCompleted;
 
     int bonus() override;
 
@@ -50,7 +52,9 @@ public:
 
     bool canTest(Genre genre);
 
-    std::string nextHour();
+    std::string nextHour(int hour);
 
     std::string assignRequest(const std::shared_ptr<ReviewRequest> &request);
+
+    std::string summary();
 };
