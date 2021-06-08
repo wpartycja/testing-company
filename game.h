@@ -30,7 +30,7 @@ public:
 
     float getAvgRating();
 
-    void addRating(float rating);
+    int addRating(int rating);
 
     std::string display();
 };
@@ -45,6 +45,7 @@ class ReviewRequest {
     bool paid = false;
     int hoursRequested;
     int price = 0;
+    int rate = 0;
 
 public:
     ReviewRequest(int n_id, std::shared_ptr<Game> n_game, int n_hoursRequested);
@@ -52,6 +53,8 @@ public:
     std::shared_ptr<Game> getGame() const;
 
     int getId() const;
+
+    int getRate() const;
 
     int getHoursRequested() const;
 
@@ -62,6 +65,8 @@ public:
     int getPrice() const; // get price
 
     void setPrice(int n_price);
+
+    void setRate(int n_rate);
 
     bool isPaid() const;
 
