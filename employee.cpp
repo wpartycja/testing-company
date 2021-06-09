@@ -91,7 +91,7 @@ std::string Manager::nextHour(int hour) {
         if (competentTesters.empty()) {
             progress << "[";
             for (int i = 0; i < request->getHoursTested(); i++)progress << "#";
-            for (int i = 0; i < request->getHoursLeft(); i++)progress << " ";
+            for (unsigned int i = 0; i < request->getHoursLeft(); i++)progress << " ";
             progress << "] Waiting for testers\n\n";
             continue;
         }
@@ -110,7 +110,7 @@ std::string Manager::nextHour(int hour) {
         for (int i = 0; i < request->getHoursTested(); i++)progress << "#";
         int testedFor = request->test((int) competentTesters.size());
         for (int i = 0; i < testedFor; i++)progress << "+";
-        for (int i = 0; i < request->getHoursLeft(); i++)progress << " ";
+        for (unsigned int i = 0; i < request->getHoursLeft(); i++)progress << " ";
         progress << "] ";
 
         if (request->getHoursLeft() == 0) {

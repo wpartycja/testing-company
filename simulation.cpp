@@ -7,12 +7,14 @@
 #include <thread>
 #include <fstream>
 #include <sstream>
+#include <utility>
 
 
 Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games,
                        std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames)
         : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),
-          num_games(n_num_games), gameNames(newGameNames), publisherNames(newPublisherNames), requestId(0), gameId(0) {
+          num_games(n_num_games), gameNames(std::move(newGameNames)), publisherNames(std::move(newPublisherNames)),
+          requestId(0), gameId(0) {
 
 
     // create publishers
@@ -42,7 +44,7 @@ Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publi
 
 
 void Simulation::start() {
-    for (unsigned int h = 0; h < simulation_len; h++) {
+    for (int h = 0; h < simulation_len; h++) {
 
         std::ostringstream requestsLog;
 

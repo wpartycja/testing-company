@@ -19,6 +19,6 @@ void Publisher::addReviewRequest(std::shared_ptr<ReviewRequest> request) {
 std::string Publisher::display() {
     std::string display = "";
     display += name + " have " + std::to_string(games.size()) + " games.\n";
-    for (int i = 0; i < games.size(); i++) { display += games[i]->display(); }
+    for (unsigned int i = 0; i < games.size(); i++) { display += games[i]->display(); }
     return display;
 }

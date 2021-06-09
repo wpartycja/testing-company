@@ -27,7 +27,7 @@ std::string Game::getTitle() const {
 float Game::getAvgRating() {
     size_t number_of_ratings = ratings.size();
     float sum = 0;
-    for (int i = 0; i < number_of_ratings; i++) {
+    for (unsigned int i = 0; i < number_of_ratings; i++) {
         sum += ratings[i];
     }
     return sum / (float) number_of_ratings;
@@ -84,7 +84,7 @@ int ReviewRequest::getHoursTested() const {
     return hoursTested;
 }
 
-int ReviewRequest::getHoursLeft() const {
+unsigned int ReviewRequest::getHoursLeft() const {
     return hoursRequested - hoursTested;
 }
 

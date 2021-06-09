@@ -60,7 +60,7 @@ public:
 
     int getHoursTested() const;
 
-    int getHoursLeft() const;
+    unsigned int getHoursLeft() const;
 
     int getPrice() const; // get price
 

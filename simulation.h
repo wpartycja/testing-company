@@ -20,11 +20,13 @@ class Simulation {
     const int num_testers;
     const int num_publishers;
     const int num_games;
+
+    std::stack<std::string> gameNames;
+    std::stack<std::string> publisherNames;
+
     int requestId;
     int gameId;
 
-    std::stack<std::string> publisherNames;
-    std::stack<std::string> gameNames;
 
 
     static Genre getGenre();
