@@ -9,22 +9,11 @@
 #include <sstream>
 
 
-Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games)
+Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games,
+                       std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames)
         : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),
-          num_games(n_num_games), requestId(0), gameId(0) {
+          num_games(n_num_games), gameNames(newGameNames), publisherNames(newPublisherNames), requestId(0), gameId(0) {
 
-    // load game and publisher names from files
-
-    std::fstream file;
-    std::string name;
-
-    file.open("game_names.txt", std::ios::in);
-    while (getline(file, name)) gameNames.push(name);
-    file.close();
-
-    file.open("publisher_names.txt", std::ios::in);
-    while (getline(file, name)) publisherNames.push(name);
-    file.close();
 
     // create publishers
     for (int i = 0; i < num_publishers; i++) {

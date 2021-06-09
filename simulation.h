@@ -45,7 +45,8 @@ class Simulation {
 
 public:
 
-    Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games);
+    Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games,
+               std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames);
 
     void start();
 };
