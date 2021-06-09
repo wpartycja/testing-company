@@ -88,6 +88,14 @@ unsigned int ReviewRequest::getHoursLeft() const {
     return hoursRequested - hoursTested;
 }
 
+int ReviewRequest::getSubmissionHour() const{
+    return submissionHour;
+}
+
+int ReviewRequest::getHourPaid() const {
+    return hourPaid;
+}
+
 //set function
 void ReviewRequest::setPrice(int n_price) {
     price = n_price;
@@ -95,6 +103,10 @@ void ReviewRequest::setPrice(int n_price) {
 
 void ReviewRequest::setRate(int n_rate) {
     rate = n_rate;
+}
+
+void ReviewRequest::setSubmissionHour(int newHour) {
+    submissionHour = newHour;
 }
 
 //paying functions
@@ -105,6 +117,10 @@ bool ReviewRequest::isPaid() const {
 void ReviewRequest::pay(int hour) {
     paid = true;
     hourPaid = hour;
+}
+
+void ReviewRequest::addOverhang(int overhang) {
+    price += overhang;
 }
 
 int ReviewRequest::test(int hours) {

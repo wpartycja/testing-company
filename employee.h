@@ -44,6 +44,7 @@ class Manager : public Employee {
     std::list<std::shared_ptr<ReviewRequest>> requests;
     std::list<std::shared_ptr<Tester>> testers;
     std::vector<std::shared_ptr<ReviewRequest>> requestsCompleted;
+    std::list<std::shared_ptr<ReviewRequest>> unpaidRequests;
 
     int bonus() override;
 
@@ -58,9 +59,11 @@ public:
 
     std::string nextHour(int hour);
 
-    std::string assignRequest(const std::shared_ptr<ReviewRequest> &request);
+    std::string assignRequest(const std::shared_ptr<ReviewRequest> &request, int hour);
 
     std::string summary();
 
     std::string payoff();
+
+    std::string checkPayments(int hour);
 };

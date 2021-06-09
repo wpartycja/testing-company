@@ -41,6 +41,7 @@ class ReviewRequest {
     int id;
     std::shared_ptr<Game> game;
     int hoursTested = 0;
+    int submissionHour;
     int hourPaid = 0;
     bool paid = false;
     int hoursRequested;
@@ -64,9 +65,17 @@ public:
 
     int getPrice() const; // get price
 
+    int getSubmissionHour() const;
+
+    int getHourPaid() const;
+
     void setPrice(int n_price);
 
     void setRate(int n_rate);
+
+    void setSubmissionHour(int newHour);
+
+    void addOverhang(int overhang);
 
     bool isPaid() const;
 

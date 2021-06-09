@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <map>
 #include <sstream>
+#include <random>
 
 //Employee
 
@@ -59,13 +60,15 @@ int Manager::bonus() {
 }
 
 std::string Manager::nextHour(int hour) {
-    std::ostringstream progress;
-    std::ostringstream info;
+
+    // if there is nothing to do
     if (requests.empty()) {
-        // there is nothing to do
         return "Waiting for requests\n";
     }
 
+    // data initialization
+    std::ostringstream progress;
+    std::ostringstream info;
     std::list<std::shared_ptr<Tester>> freeTesters = testers;
     std::vector<std::shared_ptr<Tester>> competentTesters = {};
 
@@ -115,7 +118,7 @@ std::string Manager::nextHour(int hour) {
 
         if (request->getHoursLeft() == 0) {
             requestsCompleted.push_back(request);
-            request->setRate(rand()%10 + 1);
+            request->setRate(rand() % 11 + 1); // games are rated from 1 to 10
             progress << "Completed! Rating: " << request->getGame()->addRating(request->getRate());
         } else {
             progress << request->getHoursTested() << "/" << request->getHoursRequested() << "h (+" << testedFor << "h)";
@@ -129,21 +132,22 @@ std::string Manager::nextHour(int hour) {
         requests.remove(request);
     }
 
+    // add Hours Worked for manager
+    addHoursWorked(1);
 
     // if it's been a week employees got their payoff
     std::string earnings = "";
-
     if (hour % 40 == 0){
         earnings += payoff();
     }
 
-    // add Hours Worked for manager
-    addHoursWorked(1);
+    // checking payments for the requests
+    std::string payments = checkPayments(hour);
 
-    return progress.str() + info.str() + earnings;
+    return progress.str() + info.str() + payments + earnings;
 }
 
-std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request) {
+std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request, int hour) {
 
     std::ostringstream log;
 
@@ -171,8 +175,10 @@ std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request
     int pricePerHour = pricesPerHour.count(specialistNr) ? pricesPerHour[specialistNr] : 60;
     int totalPrice = pricePerHour * request->getHoursRequested();
     request->setPrice(totalPrice);
+    request->setSubmissionHour(hour);
 
     requests.push_back(request);
+    unpaidRequests.push_back(request);
 
     log << "\t|New request (" << request->getId() << ") : " << request->getGame()->getTitle() << "\n";
     log << "\t|Price: " << request->getHoursRequested() << "h * " << pricePerHour << "zl/h = "
@@ -233,5 +239,39 @@ std::string Manager::payoff(){
         }
     }
     return earnings.str();
+}
+
+std::string Manager::checkPayments(int hour){
+    std::ostringstream payments;
+
+    // paying for the requests
+    for (const auto &request : unpaidRequests){
+        int payed = rand() % 2;
+        if (payed){
+            request->pay(hour);
+            payments << "\t|Request nr " << request->getId() << ": (" << request->getGame()->getTitle()
+            << ") has just been paid";
+
+            // if there was a delay we add overhang
+            int overhang = (request->getHourPaid() - request->getSubmissionHour()) - 4;
+            if (overhang > 0){
+                request->addOverhang(overhang*15);
+                payments << " with an overhang of " << overhang*15 << " zl. There were "
+                << overhang << " hours of delay.";
+            }
+            payments << "\n\t|Total price: " << request->getPrice() << "zl" << std::endl;
+        }
+        else{
+            payments <<  "\t|Request nr " << request->getId() << ": (" << request->getGame()->getTitle()
+                     << ") has not been paid yet." << std::endl;
+        }
+    }
+
+    // deleting paid requests
+    for (const auto &request : unpaidRequests){
+        if (request->isPaid()) unpaidRequests.remove(request);
+    }
+
+    return payments.str();
 }
 

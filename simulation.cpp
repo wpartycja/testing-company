@@ -44,16 +44,16 @@ Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publi
 
 
 void Simulation::start() {
-    for (int h = 0; h < simulation_len; h++) {
+    for (int h = 1; h <= simulation_len; h++) {
 
         std::ostringstream requestsLog;
 
         if (rand() % 5 == 0) {
-            requestsLog << manager.assignRequest(getReviewRequest());
+            requestsLog << manager.assignRequest(getReviewRequest(), h);
         }
 
         std::ostringstream testingLog;
-        testingLog << "Hour " << h << ":\n"  << requestsLog.str() << manager.nextHour(h);
+        testingLog << "\nHour " << h << ":\n"  << requestsLog.str() << manager.nextHour(h);
 
         std::cout << testingLog.str();
         save(testingLog.str());
