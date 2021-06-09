@@ -22,6 +22,8 @@ public:
 
     int getId() const;
 
+    int getHoursWorked();
+
     void addHoursWorked(int hours);
 };
 
@@ -45,6 +47,8 @@ class Manager : public Employee {
 
     int bonus() override;
 
+    int allPayoffs = 0;
+
 public:
     Manager(int n_id, int n_wage, std::list<std::shared_ptr<Tester>> testers);
 
@@ -57,4 +61,6 @@ public:
     std::string assignRequest(const std::shared_ptr<ReviewRequest> &request);
 
     std::string summary();
+
+    std::string payoff();
 };

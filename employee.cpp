@@ -23,6 +23,10 @@ int Employee::getId() const {
     return id;
 }
 
+int Employee::getHoursWorked() {
+    return hoursWorked;
+}
+
 void Employee::addHoursWorked(int hours) {
     hoursWorked += hours;
 }
@@ -48,7 +52,7 @@ bool Tester::canTest(Genre genre) {
 Manager::Manager() = default;
 
 Manager::Manager(int n_id, int n_wage, std::list<std::shared_ptr<Tester>> testers)
-        : Employee(n_id, n_wage), testers(std::move(testers)) {}
+        : Employee(n_id, n_wage), testers(std::move(testers)), allPayoffs(0) {}
 
 int Manager::bonus() {
     return requestsCompleted.size() * 50;
@@ -71,9 +75,9 @@ std::string Manager::nextHour(int hour) {
 
         // creating a group of testers to one game
         for (const auto &tester :freeTesters) {
-            // checking if don't have more testers than it is needed
+
+            // checking if manager doesn't have more testers than it is needed
             if (competentTesters.size() == request->getHoursLeft()) {
-                competentTesters.push_back(tester);
                 break;
             }
 
@@ -125,18 +129,18 @@ std::string Manager::nextHour(int hour) {
         requests.remove(request);
     }
 
-    std::ostringstream earnings;
-    earnings << "";
+
+    // if it's been a week employees got their payoff
+    std::string earnings = "";
+
     if (hour % 40 == 0){
-        earnings << "!!! It's been a week, time for payoff !!!\nTesters earnings:\n";
-        for (const auto &tester : testers){
-            if (tester->getSalary() != 0) {
-                earnings << tester->getId() << ". Tester earned: " << tester->getSalary() << "zl" << std::endl;
-            }
-        }
+        earnings += payoff();
     }
 
-    return progress.str() + info.str() + earnings.str();
+    // add Hours Worked for manager
+    addHoursWorked(1);
+
+    return progress.str() + info.str() + earnings;
 }
 
 std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request) {
@@ -164,7 +168,7 @@ std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request
                                      {4, 30},
                                      {5, 30}};
 
-    int pricePerHour = pricesPerHour.count(specialistNr) ? pricesPerHour[specialistNr] : 20;
+    int pricePerHour = pricesPerHour.count(specialistNr) ? pricesPerHour[specialistNr] : 60;
     int totalPrice = pricePerHour * request->getHoursRequested();
     request->setPrice(totalPrice);
 
@@ -178,21 +182,33 @@ std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request
 
 
 std::string Manager::summary() {
+
+    //Request summary
     std::ostringstream summary;
     summary << "Number of tested requests: " << requestsCompleted.size() << "\n\n";
-    unsigned int counter = 1;
-    unsigned int income = 0;
+    int counter = 1;
+    int revenue = 0;
     for (const auto &request : requestsCompleted){
         summary << counter << ") " << request->getGame()->getTitle()
                 << "\nRating from this request:" << request->getRate()
                 << "\n\tTotal game rating: " << request->getGame()->getAvgRating() << "\n\n";
-        income += request->getPrice();
+        revenue += request->getPrice();
         counter++;
     }
 
-    summary << "Total company income: " << income << "zl" << std::endl;
+
+    // Cash summary
+    int income = revenue-getSalary()-allPayoffs;
+
+    summary << "Total company revenue: " << revenue << "zl" << std::endl;
+    summary << "Testers earned: " << allPayoffs << "zl" << std::endl;
     summary << "Manager earned: " << getSalary() << "zl" << std::endl;
 
+    summary << "\nTotal company income: " << income << "zl" << std::endl;
+
+
+    // Unfinished requests summary
+    counter = 0;
     summary << "\nUnfinished requests:" << std::endl;
     if (requests.empty()){
         summary << "None - All tasks are completed" << std::endl;
@@ -201,8 +217,21 @@ std::string Manager::summary() {
         for (const auto &request : requests){
             summary << counter << ") " << request->getGame()->getTitle() << ", genre: " << request->getGame()->getGenre()
                     << "\nTested for " << request->getHoursTested() << "/" << request->getHoursRequested() <<"h.\n";
+            counter++;
         }
     }
     return summary.str();
+}
+
+std::string Manager::payoff(){
+    std::ostringstream earnings;
+    earnings << "!!! It's been a week, time for payoff !!!\nTesters earnings:\n";
+    for (const auto &tester : testers){
+        if (tester->getHoursWorked() != 0) {
+            earnings << tester->getId() << ". Tester earned: " << tester->getSalary() << "zl" << std::endl;
+            allPayoffs += tester->getSalary();
+        }
+    }
+    return earnings.str();
 }
 
