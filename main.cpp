@@ -6,9 +6,6 @@
 #include <sstream>
 #include <fstream>
 
-std::string GAME_NAMES = "game_names.txt";
-std::string PUBLISHER_NAMES = "publisher_names.txt";
-
 int main(int argc, char *argv[]) {
 
     // checking if the number of given arguments is adequate
@@ -26,14 +23,14 @@ int main(int argc, char *argv[]) {
     std::stack<std::string> publisherNames, gameNames;
 
 
-    file.open(GAME_NAMES, std::ios::in);
+    file.open("game_names.txt", std::ios::in);
     while (std::getline(file, line)) {
         ++publishersNumber;
         gameNames.push(line);
     }
     file.close();
 
-    file.open(PUBLISHER_NAMES, std::ios::in);
+    file.open("publisher_names.txt", std::ios::in);
     while (std::getline(file, line)) {
         ++gamesNumber;
         publisherNames.push(line);

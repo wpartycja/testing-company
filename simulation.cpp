@@ -8,15 +8,13 @@
 #include <sstream>
 
 
-std::string SAVE = "save.txt";
-
         /* class Simulation */
 
 Simulation::Simulation(int newSimulationLen, int newNumTesters, int newNumPublishers, int newNumGames,
                        std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames)
         : simulation_len(newSimulationLen), num_testers(newNumTesters), num_publishers(newNumPublishers),
           num_games(newNumGames), gameNames(std::move(newGameNames)), publisherNames(std::move(newPublisherNames)),
-          requestId(0), gameId(0)  {
+          gameId(0)  {
 
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     generator = std::mt19937 (seed);
@@ -138,7 +136,7 @@ void Simulation::save(const std::string &sim_log) {
     /* save information to file */
 
     std::fstream file;
-    file.open(SAVE, std::ios::out | std::ios::app);
+    file.open("save.txt", std::ios::out | std::ios::app);
     file << sim_log;
     file.close();
 }

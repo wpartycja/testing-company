@@ -1,11 +1,11 @@
 #pragma once
 
 #include "game.h"
-#include "file_names.h"
 
 #include <list>
 #include <queue>
 #include <set>
+#include <random>
 
 
 class Employee {

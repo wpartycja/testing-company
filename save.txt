@@ -564,3 +564,835 @@ Total company income: 4468zl
 Unfinished requests:
 0) Borderlands 2, Publisher: Sega
 Tested for 2/18h.
+
+Hour 1:
+Waiting for requests
+
+Hour 2:
+Waiting for requests
+
+Hour 3:
+Waiting for requests
+
+Hour 4:
+Waiting for requests
+
+Hour 5:
+	|New request (0) : The Last of Us, Publisher: Teyon
+	|Price: 14h * 60zl/h = 840zl
+
+(0) The Last of Us, Publisher: Teyon
+[+++++++       ] 7/14h (+7h)
+
+	|Request nr 0: (The Last of Us) has just been paid
+	|Total price: 840zl
+
+Hour 6:
+(0) The Last of Us, Publisher: Teyon
+[#######+++++++] Completed! Rating: 4
+
+
+Hour 7:
+Waiting for requests
+
+Hour 8:
+	|New request (1) : World of Warcraft, Publisher: Microsoft Casual Games
+	|Price: 11h * 70zl/h = 770zl
+
+(1) World of Warcraft, Publisher: Microsoft Casual Games
+[++         ] 2/11h (+2h)
+
+	|Request nr 1: (World of Warcraft) has just been paid
+	|Total price: 770zl
+
+Hour 9:
+(1) World of Warcraft, Publisher: Microsoft Casual Games
+[##++       ] 4/11h (+2h)
+
+
+Hour 10:
+(1) World of Warcraft, Publisher: Microsoft Casual Games
+[####++     ] 6/11h (+2h)
+
+
+Hour 11:
+(1) World of Warcraft, Publisher: Microsoft Casual Games
+[######++   ] 8/11h (+2h)
+
+
+Hour 12:
+(1) World of Warcraft, Publisher: Microsoft Casual Games
+[########++ ] 10/11h (+2h)
+
+
+Hour 13:
+(1) World of Warcraft, Publisher: Microsoft Casual Games
+[##########+] Completed! Rating: 6
+
+
+Hour 14:
+	|New request (2) : Forza Horizon 4, Publisher: Kiloo Games
+	|Price: 15h * 50zl/h = 750zl
+
+(2) Forza Horizon 4, Publisher: Kiloo Games
+[+++            ] 3/15h (+3h)
+
+	|Request nr 2: (Forza Horizon 4) has just been paid
+	|Total price: 750zl
+
+Hour 15:
+(2) Forza Horizon 4, Publisher: Kiloo Games
+[###+++         ] 6/15h (+3h)
+
+
+Hour 16:
+	|New request (3) : Borderlands 2, Publisher: Sega
+	|Price: 17h * 60zl/h = 1020zl
+
+(2) Forza Horizon 4, Publisher: Kiloo Games
+[######+++      ] 9/15h (+3h)
+
+(3) Borderlands 2, Publisher: Sega
+[+++++++          ] 7/17h (+7h)
+
+	|Request nr 3: (Borderlands 2) has not been paid yet.
+
+Hour 17:
+	|New request (4) : Destiny 2, Publisher: Mojang
+	|Price: 11h * 50zl/h = 550zl
+
+(2) Forza Horizon 4, Publisher: Kiloo Games
+[#########+++   ] 12/15h (+3h)
+
+(3) Borderlands 2, Publisher: Sega
+[#######+++++++   ] 14/17h (+7h)
+
+(4) Destiny 2, Publisher: Mojang
+[           ] Waiting for testers
+
+	|Request nr 3: (Borderlands 2) has not been paid yet.
+	|Request nr 4: (Destiny 2) has not been paid yet.
+
+Hour 18:
+	|New request (5) : Destiny 2, Publisher: Mojang
+	|Price: 10h * 50zl/h = 500zl
+
+(2) Forza Horizon 4, Publisher: Kiloo Games
+[############+++] Completed! Rating: 6
+
+(3) Borderlands 2, Publisher: Sega
+[##############+++] Completed! Rating: 3
+
+(4) Destiny 2, Publisher: Mojang
+[           ] Waiting for testers
+
+(5) Destiny 2, Publisher: Mojang
+[          ] Waiting for testers
+
+	|Request nr 3: (Borderlands 2) has just been paid
+	|Total price: 1020zl
+	|Request nr 4: (Destiny 2) has not been paid yet.
+	|Request nr 5: (Destiny 2) has just been paid
+	|Total price: 500zl
+
+Hour 19:
+	|New request (6) : Forza Horizon 4, Publisher: Kiloo Games
+	|Price: 16h * 50zl/h = 800zl
+
+(4) Destiny 2, Publisher: Mojang
+[+++        ] 3/11h (+3h)
+
+(5) Destiny 2, Publisher: Mojang
+[          ] Waiting for testers
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+	|Request nr 4: (Destiny 2) has not been paid yet.
+	|Request nr 6: (Forza Horizon 4) has not been paid yet.
+
+Hour 20:
+(4) Destiny 2, Publisher: Mojang
+[###+++     ] 6/11h (+3h)
+
+(5) Destiny 2, Publisher: Mojang
+[          ] Waiting for testers
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+	|Request nr 4: (Destiny 2) has not been paid yet.
+	|Request nr 6: (Forza Horizon 4) has just been paid
+	|Total price: 800zl
+
+Hour 21:
+(4) Destiny 2, Publisher: Mojang
+[######+++  ] 9/11h (+3h)
+
+(5) Destiny 2, Publisher: Mojang
+[          ] Waiting for testers
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+	|Request nr 4: (Destiny 2) has just been paid
+	|Total price: 550zl
+
+Hour 22:
+(4) Destiny 2, Publisher: Mojang
+[#########++] Completed! Rating: 10
+
+(5) Destiny 2, Publisher: Mojang
+[+         ] 1/10h (+1h)
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+
+Hour 23:
+(5) Destiny 2, Publisher: Mojang
+[#+++      ] 4/10h (+3h)
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+
+Hour 24:
+(5) Destiny 2, Publisher: Mojang
+[####+++   ] 7/10h (+3h)
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+
+Hour 25:
+(5) Destiny 2, Publisher: Mojang
+[#######+++] Completed! Rating: 10
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[                ] Waiting for testers
+
+
+Hour 26:
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[+++             ] 3/16h (+3h)
+
+
+Hour 27:
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[###+++          ] 6/16h (+3h)
+
+
+Hour 28:
+	|New request (7) : Dota 2, Publisher: Milestone srl
+	|Price: 14h * 50zl/h = 700zl
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[######+++       ] 9/16h (+3h)
+
+(7) Dota 2, Publisher: Milestone srl
+[++            ] 2/14h (+2h)
+
+	|Request nr 7: (Dota 2) has not been paid yet.
+
+Hour 29:
+	|New request (8) : Pac-Man, Publisher: Xbox Game Studios
+	|Price: 16h * 30zl/h = 480zl
+
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[#########+++    ] 12/16h (+3h)
+
+(7) Dota 2, Publisher: Milestone srl
+[##++          ] 4/14h (+2h)
+
+(8) Pac-Man, Publisher: Xbox Game Studios
+[++++            ] 4/16h (+4h)
+
+	|Request nr 7: (Dota 2) has just been paid
+	|Total price: 700zl
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 30:
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[############+++ ] 15/16h (+3h)
+
+(7) Dota 2, Publisher: Milestone srl
+[####++        ] 6/14h (+2h)
+
+(8) Pac-Man, Publisher: Xbox Game Studios
+[####++++        ] 8/16h (+4h)
+
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 31:
+(6) Forza Horizon 4, Publisher: Kiloo Games
+[###############+] Completed! Rating: 1
+
+(7) Dota 2, Publisher: Milestone srl
+[######++      ] 8/14h (+2h)
+
+(8) Pac-Man, Publisher: Xbox Game Studios
+[########++++    ] 12/16h (+4h)
+
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 32:
+	|New request (9) : Borderlands 2, Publisher: Sega
+	|Price: 10h * 60zl/h = 600zl
+
+(7) Dota 2, Publisher: Milestone srl
+[########+++   ] 11/14h (+3h)
+
+(8) Pac-Man, Publisher: Xbox Game Studios
+[############++++] Completed! Rating: 4
+
+(9) Borderlands 2, Publisher: Sega
+[++++      ] 4/10h (+4h)
+
+	|Request nr 8: (Pac-Man) has not been paid yet.
+	|Request nr 9: (Borderlands 2) has not been paid yet.
+
+Hour 33:
+(7) Dota 2, Publisher: Milestone srl
+[###########+++] Completed! Rating: 10
+
+(9) Borderlands 2, Publisher: Sega
+[####++++++] Completed! Rating: 7
+
+	|Request nr 8: (Pac-Man) has not been paid yet.
+	|Request nr 9: (Borderlands 2) has just been paid
+	|Total price: 600zl
+
+Hour 34:
+Waiting for requests
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 35:
+Waiting for requests
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 36:
+Waiting for requests
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 37:
+Waiting for requests
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 38:
+Waiting for requests
+	|Request nr 8: (Pac-Man) has not been paid yet.
+
+Hour 39:
+Waiting for requests
+	|Request nr 8: (Pac-Man) has just been paid with an overhang of 30 zl. There were 2 hours of delay.
+	|Total price: 510zl
+
+Hour 40:
+Waiting for requests
+
+!!! It's been a week, time for payoff !!!
+Testers earnings:
+0. Tester earned: 440zl
+1. Tester earned: 270zl
+3. Tester earned: 324zl
+4. Tester earned: 117zl
+5. Tester earned: 132zl
+6. Tester earned: 188zl
+8. Tester earned: 138zl
+11. Tester earned: 346zl
+12. Tester earned: 154zl
+14. Tester earned: 240zl
+15. Tester earned: 92zl
+16. Tester earned: 204zl
+17. Tester earned: 156zl
+18. Tester earned: 230zl
+19. Tester earned: 180zl
+
+Hour 41:
+Waiting for requests
+
+Hour 42:
+Waiting for requests
+
+Hour 43:
+Waiting for requests
+
+Hour 44:
+Waiting for requests
+
+Hour 45:
+Waiting for requests
+
+Hour 46:
+Waiting for requests
+
+Hour 47:
+Waiting for requests
+
+Hour 48:
+Waiting for requests
+
+Hour 49:
+	|New request (10) : Animal Crossing, Publisher: Riot Games
+	|Price: 18h * 30zl/h = 540zl
+
+(10) Animal Crossing, Publisher: Riot Games
+[++++              ] 4/18h (+4h)
+
+	|Request nr 10: (Animal Crossing) has not been paid yet.
+
+Hour 50:
+(10) Animal Crossing, Publisher: Riot Games
+[####++++          ] 8/18h (+4h)
+
+	|Request nr 10: (Animal Crossing) has not been paid yet.
+
+
+
+	***Summary***
+
+Simulation duration: 50h.
+Number of testers: 20
+
+Manager:
+Number of tested requests: 10
+
+1) The Last of Us, Publisher: Teyon
+Rating from this request:4
+	Total game rating: 4
+
+2) World of Warcraft, Publisher: Microsoft Casual Games
+Rating from this request:6
+	Total game rating: 6
+
+3) Forza Horizon 4, Publisher: Kiloo Games
+Rating from this request:6
+	Total game rating: 3.5
+
+4) Borderlands 2, Publisher: Sega
+Rating from this request:3
+	Total game rating: 5
+
+5) Destiny 2, Publisher: Mojang
+Rating from this request:10
+	Total game rating: 10
+
+6) Destiny 2, Publisher: Mojang
+Rating from this request:10
+	Total game rating: 10
+
+7) Forza Horizon 4, Publisher: Kiloo Games
+Rating from this request:1
+	Total game rating: 3.5
+
+8) Pac-Man, Publisher: Xbox Game Studios
+Rating from this request:4
+	Total game rating: 4
+
+9) Dota 2, Publisher: Milestone srl
+Rating from this request:10
+	Total game rating: 10
+
+10) Borderlands 2, Publisher: Sega
+Rating from this request:7
+	Total game rating: 5
+
+Total company revenue: 7040zl
+Testers earned: 3211zl
+Manager earned: 2000zl
+
+Total company income: 1829zl
+
+Unfinished requests:
+0) Animal Crossing, Publisher: Riot Games
+Tested for 8/18h.
+
+Hour 1:
+Waiting for requests
+
+Hour 2:
+	|New request (7730428) : Pac-Man, Publisher: Xbox Game Studios
+	|Price: 14h * 30zl/h = 420zl
+
+(7730428) Pac-Man, Publisher: Xbox Game Studios
+[+++++         ] 5/14h (+5h)
+
+	|Request nr 7730428: (Pac-Man) has not been paid yet.
+
+Hour 3:
+(7730428) Pac-Man, Publisher: Xbox Game Studios
+[#####+++++    ] 10/14h (+5h)
+
+	|Request nr 7730428: (Pac-Man) has not been paid yet.
+
+Hour 4:
+(7730428) Pac-Man, Publisher: Xbox Game Studios
+[##########++++] Completed! Rating: 6
+
+	|Request nr 7730428: (Pac-Man) has just been paid
+	|Total price: 420zl
+
+Hour 5:
+Waiting for requests
+
+Hour 6:
+Waiting for requests
+
+Hour 7:
+	|New request (7730429) : Grand Theft Auto: Vice City, Publisher: Techland
+	|Price: 19h * 30zl/h = 570zl
+
+(7730429) Grand Theft Auto: Vice City, Publisher: Techland
+[++++               ] 4/19h (+4h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+
+Hour 8:
+(7730429) Grand Theft Auto: Vice City, Publisher: Techland
+[####++++           ] 8/19h (+4h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+
+Hour 9:
+	|New request (7730430) : Destiny 2, Publisher: Mojang
+	|Price: 11h * 30zl/h = 330zl
+
+(7730429) Grand Theft Auto: Vice City, Publisher: Techland
+[########++++       ] 12/19h (+4h)
+
+(7730430) Destiny 2, Publisher: Mojang
+[+++++      ] 5/11h (+5h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+	|Request nr 7730430: (Destiny 2) has not been paid yet.
+
+Hour 10:
+(7730429) Grand Theft Auto: Vice City, Publisher: Techland
+[############++++   ] 16/19h (+4h)
+
+(7730430) Destiny 2, Publisher: Mojang
+[#####+++++ ] 10/11h (+5h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+	|Request nr 7730430: (Destiny 2) has not been paid yet.
+
+Hour 11:
+	|New request (7730431) : Grand Theft Auto: Vice City, Publisher: Techland
+	|Price: 19h * 30zl/h = 570zl
+
+(7730429) Grand Theft Auto: Vice City, Publisher: Techland
+[################+++] Completed! Rating: 7
+
+(7730430) Destiny 2, Publisher: Mojang
+[##########+] Completed! Rating: 2
+
+(7730431) Grand Theft Auto: Vice City, Publisher: Techland
+[+                  ] 1/19h (+1h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+	|Request nr 7730430: (Destiny 2) has not been paid yet.
+	|Request nr 7730431: (Grand Theft Auto: Vice City) has not been paid yet.
+
+Hour 12:
+(7730431) Grand Theft Auto: Vice City, Publisher: Techland
+[#++++              ] 5/19h (+4h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+	|Request nr 7730430: (Destiny 2) has not been paid yet.
+	|Request nr 7730431: (Grand Theft Auto: Vice City) has not been paid yet.
+
+Hour 13:
+(7730431) Grand Theft Auto: Vice City, Publisher: Techland
+[#####++++          ] 9/19h (+4h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+	|Request nr 7730430: (Destiny 2) has not been paid yet.
+	|Request nr 7730431: (Grand Theft Auto: Vice City) has not been paid yet.
+
+Hour 14:
+(7730431) Grand Theft Auto: Vice City, Publisher: Techland
+[#########++++      ] 13/19h (+4h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has not been paid yet.
+	|Request nr 7730430: (Destiny 2) has just been paid
+	|Total price: 330zl
+	|Request nr 7730431: (Grand Theft Auto: Vice City) has just been paid
+	|Total price: 570zl
+
+Hour 15:
+(7730431) Grand Theft Auto: Vice City, Publisher: Techland
+[#############++++  ] 17/19h (+4h)
+
+	|Request nr 7730429: (Grand Theft Auto: Vice City) has just been paid
+	|Total price: 570zl
+
+Hour 16:
+	|New request (7730432) : The Legend of Zelda, Publisher: Ubisoft
+	|Price: 11h * 30zl/h = 330zl
+
+(7730431) Grand Theft Auto: Vice City, Publisher: Techland
+[#################++] Completed! Rating: 5
+
+(7730432) The Legend of Zelda, Publisher: Ubisoft
+[++++       ] 4/11h (+4h)
+
+	|Request nr 7730432: (The Legend of Zelda) has not been paid yet.
+
+Hour 17:
+(7730432) The Legend of Zelda, Publisher: Ubisoft
+[####++++   ] 8/11h (+4h)
+
+	|Request nr 7730432: (The Legend of Zelda) has not been paid yet.
+
+Hour 18:
+(7730432) The Legend of Zelda, Publisher: Ubisoft
+[########+++] Completed! Rating: 1
+
+	|Request nr 7730432: (The Legend of Zelda) has not been paid yet.
+
+Hour 19:
+	Rejected request (7730433) Borderlands 2 - no testers for this genre
+Waiting for requests
+	|Request nr 7730432: (The Legend of Zelda) has not been paid yet.
+
+Hour 20:
+Waiting for requests
+	|Request nr 7730432: (The Legend of Zelda) has not been paid yet.
+
+Hour 21:
+Waiting for requests
+	|Request nr 7730432: (The Legend of Zelda) has just been paid
+	|Total price: 330zl
+
+Hour 22:
+Waiting for requests
+
+Hour 23:
+	|New request (7730434) : Tetris, Publisher: Nintendo
+	|Price: 18h * 30zl/h = 540zl
+
+(7730434) Tetris, Publisher: Nintendo
+[++++              ] 4/18h (+4h)
+
+	|Request nr 7730434: (Tetris) has not been paid yet.
+
+Hour 24:
+(7730434) Tetris, Publisher: Nintendo
+[####++++          ] 8/18h (+4h)
+
+	|Request nr 7730434: (Tetris) has not been paid yet.
+
+Hour 25:
+(7730434) Tetris, Publisher: Nintendo
+[########++++      ] 12/18h (+4h)
+
+	|Request nr 7730434: (Tetris) has not been paid yet.
+
+Hour 26:
+	|New request (7730435) : NBA 2K21, Publisher: NCSoft
+	|Price: 11h * 70zl/h = 770zl
+
+(7730434) Tetris, Publisher: Nintendo
+[############++++  ] 16/18h (+4h)
+
+(7730435) NBA 2K21, Publisher: NCSoft
+[++         ] 2/11h (+2h)
+
+	|Request nr 7730434: (Tetris) has just been paid
+	|Total price: 540zl
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 27:
+(7730434) Tetris, Publisher: Nintendo
+[################++] Completed! Rating: 5
+
+(7730435) NBA 2K21, Publisher: NCSoft
+[##++       ] 4/11h (+2h)
+
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 28:
+(7730435) NBA 2K21, Publisher: NCSoft
+[####++     ] 6/11h (+2h)
+
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 29:
+(7730435) NBA 2K21, Publisher: NCSoft
+[######++   ] 8/11h (+2h)
+
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 30:
+(7730435) NBA 2K21, Publisher: NCSoft
+[########++ ] 10/11h (+2h)
+
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 31:
+(7730435) NBA 2K21, Publisher: NCSoft
+[##########+] Completed! Rating: 7
+
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 32:
+Waiting for requests
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 33:
+Waiting for requests
+	|Request nr 7730435: (NBA 2K21) has not been paid yet.
+
+Hour 34:
+Waiting for requests
+	|Request nr 7730435: (NBA 2K21) has just been paid
+	|Total price: 770zl
+
+Hour 35:
+Waiting for requests
+
+Hour 36:
+	|New request (7730436) : Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+	|Price: 13h * 30zl/h = 390zl
+
+(7730436) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[+++++        ] 5/13h (+5h)
+
+	|Request nr 7730436: (Tom Clancy's Rainbow Six: Siege) has just been paid
+	|Total price: 390zl
+
+Hour 37:
+(7730436) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[#####+++++   ] 10/13h (+5h)
+
+
+Hour 38:
+(7730436) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[##########+++] Completed! Rating: 4
+
+
+Hour 39:
+Waiting for requests
+
+Hour 40:
+Waiting for requests
+
+!!! It's been a week, time for payoff !!!
+Testers earnings:
+0. Tester earned: 210zl
+1. Tester earned: 280zl
+2. Tester earned: 160zl
+3. Tester earned: 264zl
+5. Tester earned: 204zl
+6. Tester earned: 140zl
+7. Tester earned: 162zl
+8. Tester earned: 270zl
+9. Tester earned: 103zl
+10. Tester earned: 160zl
+11. Tester earned: 156zl
+12. Tester earned: 148zl
+13. Tester earned: 79zl
+14. Tester earned: 118zl
+15. Tester earned: 103zl
+16. Tester earned: 117zl
+17. Tester earned: 92zl
+18. Tester earned: 60zl
+19. Tester earned: 104zl
+
+Hour 41:
+	|New request (7730437) : Forza Horizon 4, Publisher: Kiloo Games
+	|Price: 11h * 30zl/h = 330zl
+
+(7730437) Forza Horizon 4, Publisher: Kiloo Games
+[++++       ] 4/11h (+4h)
+
+	|Request nr 7730437: (Forza Horizon 4) has not been paid yet.
+
+Hour 42:
+(7730437) Forza Horizon 4, Publisher: Kiloo Games
+[####++++   ] 8/11h (+4h)
+
+	|Request nr 7730437: (Forza Horizon 4) has just been paid
+	|Total price: 330zl
+
+Hour 43:
+(7730437) Forza Horizon 4, Publisher: Kiloo Games
+[########+++] Completed! Rating: 9
+
+
+Hour 44:
+Waiting for requests
+
+Hour 45:
+Waiting for requests
+
+Hour 46:
+Waiting for requests
+
+Hour 47:
+Waiting for requests
+
+Hour 48:
+Waiting for requests
+
+Hour 49:
+Waiting for requests
+
+Hour 50:
+Waiting for requests
+
+
+
+	***Summary***
+
+Simulation duration: 50h.
+Number of testers: 20
+
+Manager:
+Number of tested requests: 9
+
+1) Pac-Man, Publisher: Xbox Game Studios
+Rating from this request:6
+	Total game rating: 6
+
+2) Grand Theft Auto: Vice City, Publisher: Techland
+Rating from this request:7
+	Total game rating: 6
+
+3) Destiny 2, Publisher: Mojang
+Rating from this request:2
+	Total game rating: 2
+
+4) Grand Theft Auto: Vice City, Publisher: Techland
+Rating from this request:5
+	Total game rating: 6
+
+5) The Legend of Zelda, Publisher: Ubisoft
+Rating from this request:1
+	Total game rating: 1
+
+6) Tetris, Publisher: Nintendo
+Rating from this request:5
+	Total game rating: 5
+
+7) NBA 2K21, Publisher: NCSoft
+Rating from this request:7
+	Total game rating: 7
+
+8) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+Rating from this request:4
+	Total game rating: 4
+
+9) Forza Horizon 4, Publisher: Kiloo Games
+Rating from this request:9
+	Total game rating: 9
+
+Total company revenue: 4250zl
+Testers earned: 2930zl
+Manager earned: 1950zl
+
+Total company income: -630zl
+
+Unfinished requests:
+None - All tasks are completed

@@ -89,4 +89,4 @@ public:
     std::string display() const;
 };
 
-std::ostream &operator<<(std::ostream &output, ReviewRequest &rewiew);
+std::ostream &operator<<(std::ostream &output, ReviewRequest &review);
