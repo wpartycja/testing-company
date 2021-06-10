@@ -1,167 +1,566 @@
-Hour 0:
-Waiting for requests
-Hour 1:
-	|New request (0) : Mario Kart
-	|Price: 18h * 20zl/h = 360zl
 
-(0) Mario Kart
-[++++++            ] 6/18h (+6h)
+Hour 1:
+Waiting for requests
 
 Hour 2:
-(0) Mario Kart
-[######++++++      ] 12/18h (+6h)
+Waiting for requests
 
 Hour 3:
-(0) Mario Kart
-[############++++++] Completed! Rating: 3
+Waiting for requests
 
 Hour 4:
-Waiting for requests
-Hour 5:
-Waiting for requests
-Hour 6:
-	|New request (1) : Animal Crossing
-	|Price: 10h * 20zl/h = 200zl
+	|New request (0) : The Last of Us, Publisher: Teyon
+	|Price: 13h * 30zl/h = 390zl
 
-(1) Animal Crossing
-[++++++    ] 6/10h (+6h)
+(0) The Last of Us, Publisher: Teyon
+[+++++        ] 5/13h (+5h)
+
+	|Request nr 0: (The Last of Us) has not been paid yet.
+
+Hour 5:
+(0) The Last of Us, Publisher: Teyon
+[#####+++++   ] 10/13h (+5h)
+
+	|Request nr 0: (The Last of Us) has not been paid yet.
+
+Hour 6:
+(0) The Last of Us, Publisher: Teyon
+[##########+++] Completed! Rating: 2
+
+	|Request nr 0: (The Last of Us) has not been paid yet.
 
 Hour 7:
-(1) Animal Crossing
-[######++++] Completed! Rating: 3
+Waiting for requests
+	|Request nr 0: (The Last of Us) has not been paid yet.
 
 Hour 8:
-	|New request (2) : FIFA 20
-	|Price: 14h * 30zl/h = 420zl
+	|New request (1) : Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+	|Price: 13h * 50zl/h = 650zl
 
-(2) FIFA 20
-[++++          ] 4/14h (+4h)
+(1) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[+++          ] 3/13h (+3h)
+
+	|Request nr 0: (The Last of Us) has not been paid yet.
+	|Request nr 1: (Tom Clancy's Rainbow Six: Siege) has just been paid
+	|Total price: 650zl
 
 Hour 9:
-(2) FIFA 20
-[####++++      ] 8/14h (+4h)
+	|New request (2) : FIFA 20, Publisher: Rockstar Games
+	|Price: 19h * 50zl/h = 950zl
+
+(1) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[###+++       ] 6/13h (+3h)
+
+(2) FIFA 20, Publisher: Rockstar Games
+[                   ] Waiting for testers
+
+	|Request nr 0: (The Last of Us) has not been paid yet.
+	|Request nr 2: (FIFA 20) has not been paid yet.
 
 Hour 10:
-(2) FIFA 20
-[########++++  ] 12/14h (+4h)
+(1) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[######+++    ] 9/13h (+3h)
+
+(2) FIFA 20, Publisher: Rockstar Games
+[                   ] Waiting for testers
+
+	|Request nr 0: (The Last of Us) has just been paid
+	|Total price: 390zl
+	|Request nr 2: (FIFA 20) has not been paid yet.
 
 Hour 11:
-(2) FIFA 20
-[############++] Completed! Rating: 6
+(1) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[#########+++ ] 12/13h (+3h)
+
+(2) FIFA 20, Publisher: Rockstar Games
+[                   ] Waiting for testers
+
+	|Request nr 2: (FIFA 20) has not been paid yet.
 
 Hour 12:
-Waiting for requests
-Hour 13:
-Waiting for requests
-Hour 14:
-	|New request (3) : NBA 2K21
-	|Price: 14h * 50zl/h = 700zl
+	|New request (3) : NBA 2K21, Publisher: NCSoft
+	|Price: 17h * 30zl/h = 510zl
 
-(3) NBA 2K21
-[+++           ] 3/14h (+3h)
+(1) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[############+] Completed! Rating: 9
+
+(2) FIFA 20, Publisher: Rockstar Games
+[++                 ] 2/19h (+2h)
+
+(3) NBA 2K21, Publisher: NCSoft
+[+++              ] 3/17h (+3h)
+
+	|Request nr 2: (FIFA 20) has not been paid yet.
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+
+Hour 13:
+(2) FIFA 20, Publisher: Rockstar Games
+[##+++              ] 5/19h (+3h)
+
+(3) NBA 2K21, Publisher: NCSoft
+[###+++           ] 6/17h (+3h)
+
+	|Request nr 2: (FIFA 20) has not been paid yet.
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+
+Hour 14:
+(2) FIFA 20, Publisher: Rockstar Games
+[#####+++           ] 8/19h (+3h)
+
+(3) NBA 2K21, Publisher: NCSoft
+[######+++        ] 9/17h (+3h)
+
+	|Request nr 2: (FIFA 20) has not been paid yet.
+	|Request nr 3: (NBA 2K21) has not been paid yet.
 
 Hour 15:
-	|New request (4) : Grand Theft Auto: Vice City
-	|Price: 18h * 20zl/h = 360zl
+(2) FIFA 20, Publisher: Rockstar Games
+[########+++        ] 11/19h (+3h)
 
-(3) NBA 2K21
-[###+++        ] 6/14h (+3h)
+(3) NBA 2K21, Publisher: NCSoft
+[#########+++     ] 12/17h (+3h)
 
-(4) Grand Theft Auto: Vice City
-[++++++            ] 6/18h (+6h)
+	|Request nr 2: (FIFA 20) has not been paid yet.
+	|Request nr 3: (NBA 2K21) has not been paid yet.
 
 Hour 16:
-(3) NBA 2K21
-[######+++     ] 9/14h (+3h)
+(2) FIFA 20, Publisher: Rockstar Games
+[###########+++     ] 14/19h (+3h)
 
-(4) Grand Theft Auto: Vice City
-[######++++++      ] 12/18h (+6h)
+(3) NBA 2K21, Publisher: NCSoft
+[############+++  ] 15/17h (+3h)
+
+	|Request nr 2: (FIFA 20) has not been paid yet.
+	|Request nr 3: (NBA 2K21) has not been paid yet.
 
 Hour 17:
-(3) NBA 2K21
-[#########+++  ] 12/14h (+3h)
+(2) FIFA 20, Publisher: Rockstar Games
+[##############+++  ] 17/19h (+3h)
 
-(4) Grand Theft Auto: Vice City
-[############++++++] Completed! Rating: 5
+(3) NBA 2K21, Publisher: NCSoft
+[###############++] Completed! Rating: 9
+
+	|Request nr 2: (FIFA 20) has just been paid
+	|Total price: 950zl
+	|Request nr 3: (NBA 2K21) has not been paid yet.
 
 Hour 18:
-(3) NBA 2K21
-[############++] Completed! Rating: 5
+(2) FIFA 20, Publisher: Rockstar Games
+[#################++] Completed! Rating: 7
+
+	|Request nr 3: (NBA 2K21) has not been paid yet.
 
 Hour 19:
 Waiting for requests
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+
+Hour 20:
+Waiting for requests
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+
+Hour 21:
+Waiting for requests
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+
+Hour 22:
+Waiting for requests
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+
+Hour 23:
+	|New request (4) : Borderlands 2, Publisher: Sega
+	|Price: 10h * 100zl/h = 1000zl
+
+(4) Borderlands 2, Publisher: Sega
+[+         ] 1/10h (+1h)
+
+	|Request nr 3: (NBA 2K21) has not been paid yet.
+	|Request nr 4: (Borderlands 2) has just been paid
+	|Total price: 1000zl
+
+Hour 24:
+	|New request (5) : The Last of Us, Publisher: Teyon
+	|Price: 17h * 30zl/h = 510zl
+
+(4) Borderlands 2, Publisher: Sega
+[#+        ] 2/10h (+1h)
+
+(5) The Last of Us, Publisher: Teyon
+[+++++            ] 5/17h (+5h)
+
+	|Request nr 3: (NBA 2K21) has just been paid with an overhang of 60 zl. There were 4 hours of delay.
+	|Total price: 570zl
+	|Request nr 5: (The Last of Us) has not been paid yet.
+
+Hour 25:
+(4) Borderlands 2, Publisher: Sega
+[##+       ] 3/10h (+1h)
+
+(5) The Last of Us, Publisher: Teyon
+[#####+++++       ] 10/17h (+5h)
+
+	|Request nr 5: (The Last of Us) has not been paid yet.
+
+Hour 26:
+	|New request (6) : Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+	|Price: 19h * 70zl/h = 1330zl
+
+(4) Borderlands 2, Publisher: Sega
+[###+      ] 4/10h (+1h)
+
+(5) The Last of Us, Publisher: Teyon
+[##########+++++  ] 15/17h (+5h)
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[++                 ] 2/19h (+2h)
+
+	|Request nr 5: (The Last of Us) has not been paid yet.
+	|Request nr 6: (Call of Duty: Black Ops Cold War) has not been paid yet.
+
+Hour 27:
+	|New request (7) : Sonic the Hedgehog, Publisher: Valve
+	|Price: 16h * 100zl/h = 1600zl
+
+(4) Borderlands 2, Publisher: Sega
+[####+     ] 5/10h (+1h)
+
+(5) The Last of Us, Publisher: Teyon
+[###############++] Completed! Rating: 1
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[##++               ] 4/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[+               ] 1/16h (+1h)
+
+	|Request nr 5: (The Last of Us) has not been paid yet.
+	|Request nr 6: (Call of Duty: Black Ops Cold War) has not been paid yet.
+	|Request nr 7: (Sonic the Hedgehog) has not been paid yet.
+
+Hour 28:
+(4) Borderlands 2, Publisher: Sega
+[#####+    ] 6/10h (+1h)
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[####++             ] 6/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[#+              ] 2/16h (+1h)
+
+	|Request nr 5: (The Last of Us) has not been paid yet.
+	|Request nr 6: (Call of Duty: Black Ops Cold War) has just been paid
+	|Total price: 1330zl
+	|Request nr 7: (Sonic the Hedgehog) has not been paid yet.
+
+Hour 29:
+	|New request (8) : Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+	|Price: 10h * 50zl/h = 500zl
+
+(4) Borderlands 2, Publisher: Sega
+[######+   ] 7/10h (+1h)
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[######++           ] 8/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[##+             ] 3/16h (+1h)
+
+(8) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[++        ] 2/10h (+2h)
+
+	|Request nr 5: (The Last of Us) has just been paid
+	|Total price: 510zl
+	|Request nr 7: (Sonic the Hedgehog) has not been paid yet.
+	|Request nr 8: (Tom Clancy's Rainbow Six: Siege) has just been paid
+	|Total price: 500zl
+
+Hour 30:
+(4) Borderlands 2, Publisher: Sega
+[#######+  ] 8/10h (+1h)
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[########++         ] 10/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[###+            ] 4/16h (+1h)
+
+(8) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[##++      ] 4/10h (+2h)
+
+	|Request nr 7: (Sonic the Hedgehog) has just been paid
+	|Total price: 1600zl
+
+Hour 31:
+	|New request (9) : NBA 2K21, Publisher: NCSoft
+	|Price: 15h * 30zl/h = 450zl
+
+(4) Borderlands 2, Publisher: Sega
+[########+ ] 9/10h (+1h)
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[##########++       ] 12/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[####+           ] 5/16h (+1h)
+
+(8) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[####++    ] 6/10h (+2h)
+
+(9) NBA 2K21, Publisher: NCSoft
+[+++            ] 3/15h (+3h)
+
+	|Request nr 9: (NBA 2K21) has not been paid yet.
+
+Hour 32:
+(4) Borderlands 2, Publisher: Sega
+[#########+] Completed! Rating: 8
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[############++     ] 14/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[#####+          ] 6/16h (+1h)
+
+(8) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[######++  ] 8/10h (+2h)
+
+(9) NBA 2K21, Publisher: NCSoft
+[###+++         ] 6/15h (+3h)
+
+	|Request nr 9: (NBA 2K21) has not been paid yet.
+
+Hour 33:
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[##############++   ] 16/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[######+         ] 7/16h (+1h)
+
+(8) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+[########++] Completed! Rating: 2
+
+(9) NBA 2K21, Publisher: NCSoft
+[######+++      ] 9/15h (+3h)
+
+	|Request nr 9: (NBA 2K21) has not been paid yet.
+
+Hour 34:
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[################++ ] 18/19h (+2h)
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[#######+        ] 8/16h (+1h)
+
+(9) NBA 2K21, Publisher: NCSoft
+[#########+++   ] 12/15h (+3h)
+
+	|Request nr 9: (NBA 2K21) has not been paid yet.
+
+Hour 35:
+	|New request (10) : Genshin Impact, Publisher: LucasArts
+	|Price: 15h * 70zl/h = 1050zl
+
+(6) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
+[##################+] Completed! Rating: 5
+
+(7) Sonic the Hedgehog, Publisher: Valve
+[########+       ] 9/16h (+1h)
+
+(9) NBA 2K21, Publisher: NCSoft
+[############+++] Completed! Rating: 3
+
+(10) Genshin Impact, Publisher: LucasArts
+[+              ] 1/15h (+1h)
+
+	|Request nr 9: (NBA 2K21) has not been paid yet.
+	|Request nr 10: (Genshin Impact) has not been paid yet.
+
+Hour 36:
+(7) Sonic the Hedgehog, Publisher: Valve
+[#########+      ] 10/16h (+1h)
+
+(10) Genshin Impact, Publisher: LucasArts
+[#++            ] 3/15h (+2h)
+
+	|Request nr 9: (NBA 2K21) has just been paid
+	|Total price: 450zl
+	|Request nr 10: (Genshin Impact) has not been paid yet.
+
+Hour 37:
+(7) Sonic the Hedgehog, Publisher: Valve
+[##########+     ] 11/16h (+1h)
+
+(10) Genshin Impact, Publisher: LucasArts
+[###++          ] 5/15h (+2h)
+
+	|Request nr 10: (Genshin Impact) has not been paid yet.
+
+Hour 38:
+(7) Sonic the Hedgehog, Publisher: Valve
+[###########+    ] 12/16h (+1h)
+
+(10) Genshin Impact, Publisher: LucasArts
+[#####++        ] 7/15h (+2h)
+
+	|Request nr 10: (Genshin Impact) has just been paid
+	|Total price: 1050zl
+
+Hour 39:
+(7) Sonic the Hedgehog, Publisher: Valve
+[############+   ] 13/16h (+1h)
+
+(10) Genshin Impact, Publisher: LucasArts
+[#######++      ] 9/15h (+2h)
+
+
+Hour 40:
+(7) Sonic the Hedgehog, Publisher: Valve
+[#############+  ] 14/16h (+1h)
+
+(10) Genshin Impact, Publisher: LucasArts
+[#########++    ] 11/15h (+2h)
+
+
+!!! It's been a week, time for payoff !!!
+Testers earnings:
+0. Tester earned: 218zl
+1. Tester earned: 425zl
+4. Tester earned: 284zl
+6. Tester earned: 131zl
+8. Tester earned: 626zl
+10. Tester earned: 150zl
+11. Tester earned: 230zl
+12. Tester earned: 138zl
+13. Tester earned: 270zl
+14. Tester earned: 350zl
+15. Tester earned: 145zl
+17. Tester earned: 125zl
+19. Tester earned: 360zl
+
+Hour 41:
+(7) Sonic the Hedgehog, Publisher: Valve
+[##############+ ] 15/16h (+1h)
+
+(10) Genshin Impact, Publisher: LucasArts
+[###########++  ] 13/15h (+2h)
+
+
+Hour 42:
+(7) Sonic the Hedgehog, Publisher: Valve
+[###############+] Completed! Rating: 2
+
+(10) Genshin Impact, Publisher: LucasArts
+[#############++] Completed! Rating: 9
+
+
+Hour 43:
+Waiting for requests
+
+Hour 44:
+Waiting for requests
+
+Hour 45:
+Waiting for requests
+
+Hour 46:
+	|New request (11) : Forza Horizon 4, Publisher: Kiloo Games
+	|Price: 17h * 60zl/h = 1020zl
+
+(11) Forza Horizon 4, Publisher: Kiloo Games
+[++++++           ] 6/17h (+6h)
+
+	|Request nr 11: (Forza Horizon 4) has just been paid
+	|Total price: 1020zl
+
+Hour 47:
+(11) Forza Horizon 4, Publisher: Kiloo Games
+[######++++++     ] 12/17h (+6h)
+
+
+Hour 48:
+(11) Forza Horizon 4, Publisher: Kiloo Games
+[############+++++] Completed! Rating: 2
+
+
+Hour 49:
+	|New request (12) : Borderlands 2, Publisher: Sega
+	|Price: 18h * 100zl/h = 1800zl
+
+(12) Borderlands 2, Publisher: Sega
+[+                 ] 1/18h (+1h)
+
+	|Request nr 12: (Borderlands 2) has not been paid yet.
+
+Hour 50:
+(12) Borderlands 2, Publisher: Sega
+[#+                ] 2/18h (+1h)
+
+	|Request nr 12: (Borderlands 2) has just been paid
+	|Total price: 1800zl
 
 
 
 	***Summary***
 
-Simulation duration: 20h.
-Number of testers: 25
+Simulation duration: 50h.
+Number of testers: 20
 
 Manager:
-Number of tested requests: 5
+Number of tested requests: 12
 
-1) Mario Kart
-Rating from this request:3
-	Total game rating: 3
+1) The Last of Us, Publisher: Teyon
+Rating from this request:2
+	Total game rating: 1.5
 
-2) Animal Crossing
-Rating from this request:3
-	Total game rating: 3
+2) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+Rating from this request:9
+	Total game rating: 5.5
 
-3) FIFA 20
-Rating from this request:6
+3) NBA 2K21, Publisher: NCSoft
+Rating from this request:9
 	Total game rating: 6
 
-4) Grand Theft Auto: Vice City
+4) FIFA 20, Publisher: Rockstar Games
+Rating from this request:7
+	Total game rating: 7
+
+5) The Last of Us, Publisher: Teyon
+Rating from this request:1
+	Total game rating: 1.5
+
+6) Borderlands 2, Publisher: Sega
+Rating from this request:8
+	Total game rating: 8
+
+7) Tom Clancy's Rainbow Six: Siege, Publisher: Ion Storm
+Rating from this request:2
+	Total game rating: 5.5
+
+8) Call of Duty: Black Ops Cold War, Publisher: Interplay Entertainment
 Rating from this request:5
 	Total game rating: 5
 
-5) NBA 2K21
-Rating from this request:5
-	Total game rating: 5
+9) NBA 2K21, Publisher: NCSoft
+Rating from this request:3
+	Total game rating: 6
 
-Total company income: 2040zl
-Manager earned: 250zl
+10) Sonic the Hedgehog, Publisher: Valve
+Rating from this request:2
+	Total game rating: 2
+
+11) Genshin Impact, Publisher: LucasArts
+Rating from this request:9
+	Total game rating: 9
+
+12) Forza Horizon 4, Publisher: Kiloo Games
+Rating from this request:2
+	Total game rating: 2
+
+Total company revenue: 10020zl
+Testers earned: 3452zl
+Manager earned: 2100zl
+
+Total company income: 4468zl
 
 Unfinished requests:
-None - All tasks are completed
-
-Hour 1:
-Waiting for requests
-
-Hour 2:
-Waiting for requests
-
-Hour 3:
-Waiting for requests
-
-Hour 4:
-	|New request (0) : Borderlands 2, Publisher: Sega
-	|Price: 13h * 100zl/h = 1300zl
-
-(0) Borderlands 2, Publisher: Sega
-[+            ] 1/13h (+1h)
-
-	|Request nr 0: (Borderlands 2) has not been paid yet.
-
-Hour 5:
-(0) Borderlands 2, Publisher: Sega
-[#+           ] 2/13h (+1h)
-
-	|Request nr 0: (Borderlands 2) has not been paid yet.
-
-Hour 6:
-(0) Borderlands 2, Publisher: Sega
-[##+          ] 3/13h (+1h)
-
-	|Request nr 0: (Borderlands 2) has not been paid yet.
-
-Hour 7:
-(0) Borderlands 2, Publisher: Sega
-[###+         ] 4/13h (+1h)
-
-	|Request nr 0: (Borderlands 2) has not been paid yet.
-
-Hour 1:
-Waiting for requests
+0) Borderlands 2, Publisher: Sega
+Tested for 2/18h.
