@@ -1,6 +1,7 @@
-#include <iostream>
 #include "employee.h"
 #include "simulation.h"
+
+#include <iostream>
 #include <thread>
 #include <sstream>
 #include <fstream>

@@ -85,7 +85,8 @@ std::string Manager::nextHour(int hour) {
     }
 
     for (const auto &request :requests) {
-        progress << "(" << request->getId() << ") " << request->getGame()->getTitle() << "\n";
+        progress << "(" << request->getId() << ") " << request->getGame()->getTitle() <<
+                   ", Publisher: " << request->getGame()->getPublisher() << std::endl;
 
         // creating a group of testers to one game
         for (const auto &tester :freeTesters) {
@@ -195,7 +196,8 @@ std::string Manager::assignRequest(const std::shared_ptr<ReviewRequest> &request
     requests.push_back(request);
     unpaidRequests.push_back(request);
 
-    log << "\t|New request (" << request->getId() << ") : " << request->getGame()->getTitle() << "\n";
+    log << "\t|New request (" << request->getId() << ") : " << request->getGame()->getTitle() <<
+    ", Publisher: " << request->getGame()->getPublisher() << "\n";
     log << "\t|Price: " << request->getHoursRequested() << "h * " << pricePerHour << "zl/h = "
         << totalPrice << "zl\n\n";
     return log.str();
@@ -214,7 +216,8 @@ std::string Manager::summary() {
     int counter = 1;
     int revenue = 0;
     for (const auto &request : requestsCompleted){
-        summary << counter << ") " << request->getGame()->getTitle()
+        summary << counter << ") " << request->getGame()->getTitle() <<
+                ", Publisher: " << request->getGame()->getPublisher()
                 << "\nRating from this request:" << request->getRate()
                 << "\n\tTotal game rating: " << request->getGame()->getAvgRating() << "\n\n";
         revenue += request->getPrice();
@@ -236,6 +239,7 @@ std::string Manager::summary() {
     else{
         for (const auto &request : requests){
             summary << counter << ") " << request->getGame()->getTitle() <<
+                    ", Publisher: " << request->getGame()->getPublisher() <<
                     "\nTested for " << request->getHoursTested() << "/" << request->getHoursRequested() <<"h.\n";
             counter++;
         }
@@ -266,14 +270,13 @@ std::string Manager::checkPayments(int hour){
 
     // paying for the requests
     for (const auto &request : unpaidRequests){
-        int payed = rand() % 2;
-        if (payed){
+        if (rand() % 4 == 0){
             request->pay(hour);
             payments << "\t|Request nr " << request->getId() << ": (" << request->getGame()->getTitle()
             << ") has just been paid";
 
             // if there was a delay, manager adds overhang
-            int overhang = (request->getHourPaid() - request->getSubmissionHour()) - 4;
+            int overhang = (request->getHourPaid() - request->getSubmissionHour()) - 8;
             if (overhang > 0){
                 request->addOverhang(overhang*15);
                 payments << " with an overhang of " << overhang*15 << " zl. There were "

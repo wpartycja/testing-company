@@ -24,3 +24,7 @@ std::string Publisher::display() {
     for (unsigned int i = 0; i < games.size(); i++) { display += games[i]->display(); }
     return display;
 }
+
+std::string Publisher::getName() {
+    return name;
+}

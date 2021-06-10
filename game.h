@@ -18,6 +18,7 @@ class Game {
     const Genre genre;
     const std::string title;
     std::vector<int> ratings;
+    std::string publisher;
 
 public:
     Game(int n_id, Genre n_genre, std::string n_title);
@@ -28,9 +29,13 @@ public:
 
     float getAvgRating();
 
+    std::string getPublisher() const;
+
     int addRating(int rating);
 
     std::string display();
+
+    void setPublisher(std::string newPublisher);
 };
 
 std::ostream &operator<<(std::ostream &output, Game &game);

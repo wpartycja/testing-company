@@ -32,6 +32,10 @@ Simulation::Simulation(int newSimulationLen, int newNumTesters, int newNumPublis
         }
 
         auto publisher = std::make_shared<Publisher>(getPublisherName(), publisherGames);
+
+        for (const auto &game : publisherGames){
+            game->setPublisher(publisher->getName());
+        }
         publishers.push_back(publisher);
     }
 

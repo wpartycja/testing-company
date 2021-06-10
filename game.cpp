@@ -27,6 +27,10 @@ float Game::getAvgRating() {
     return sum / (float) number_of_ratings;
 }
 
+std::string Game::getPublisher() const{
+    return publisher;
+}
+
 int Game::addRating(int rating) {
     ratings.push_back(rating);
     return rating;
@@ -36,6 +40,10 @@ std::string Game::display() {
     std::string display;
     display = "\tGame title: " + title + "\t\t\tGame ID: " + std::to_string(id);
     return display;
+}
+
+void Game::setPublisher(std::string newPublisher) {
+    publisher = newPublisher;
 }
 
 std::ostream &operator<<(std::ostream &output, Game &game) {
