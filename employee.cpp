@@ -4,6 +4,8 @@
 #include <algorithm>
 #include <map>
 #include <sstream>
+#include <chrono>
+#include <random>
 
 #include "employee.h"
 
@@ -58,7 +60,11 @@ Manager::Manager() = default;
 
 // constructor
 Manager::Manager(int newId, int newWage, std::list<std::shared_ptr<Tester>> testers)
-        : Employee(newId, newWage), testers(std::move(testers)), allPayoffs(0) {}
+        : Employee(newId, newWage), testers(std::move(testers)), allPayoffs(0) {
+
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    generator = std::mt19937 (seed);
+}
 
 
 // functions
@@ -131,7 +137,7 @@ std::string Manager::nextHour(int hour) {
         // completed request
         if (request->getHoursLeft() == 0) {
             requestsCompleted.push_back(request);
-            request->setRate(rand() % 10 + 1); // games are rated from 1 to 10
+            request->setRate(generator() % 10 + 1); // games are rated from 1 to 10
             progress << "Completed! Rating: " << request->getGame()->addRating(request->getRate());
         } else {
             progress << request->getHoursTested() << "/" << request->getHoursRequested() << "h (+" << testedFor << "h)";
@@ -270,7 +276,7 @@ std::string Manager::checkPayments(int hour){
 
     // paying for the requests
     for (const auto &request : unpaidRequests){
-        if (rand() % 4 == 0){
+        if (generator() % 4 == 0){
             request->pay(hour);
             payments << "\t|Request nr " << request->getId() << ": (" << request->getGame()->getTitle()
             << ") has just been paid";

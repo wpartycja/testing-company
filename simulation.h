@@ -3,6 +3,7 @@
 #include "publisher.h"
 #include "game.h"
 #include "employee.h"
+#include "file_names.h"
 
 #include <string>
 #include <vector>
@@ -27,11 +28,11 @@ class Simulation {
     int requestId;
     int gameId;
 
-    static Genre getGenre();
+    Genre getGenre();
 
-    static int getTesterWage();
+    int getTesterWage();
 
-    static std::set<Genre> getTesterGenres();
+    std::set<Genre> getTesterGenres();
 
     std::string getPublisherName();
 
@@ -42,6 +43,8 @@ class Simulation {
     static void save(const std::string&);
 
     std::string summary();
+
+    std::mt19937 generator;
 
 public:
 

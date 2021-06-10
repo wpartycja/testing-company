@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <random>
-#include <chrono>
 #include <thread>
 #include <fstream>
 #include <sstream>
@@ -17,8 +16,10 @@ Simulation::Simulation(int newSimulationLen, int newNumTesters, int newNumPublis
                        std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames)
         : simulation_len(newSimulationLen), num_testers(newNumTesters), num_publishers(newNumPublishers),
           num_games(newNumGames), gameNames(std::move(newGameNames)), publisherNames(std::move(newPublisherNames)),
-          requestId(0), gameId(0) {
+          requestId(0), gameId(0)  {
 
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    generator = std::mt19937 (seed);
 
     // create publishers
     for (int i = 0; i < num_publishers; i++) {
@@ -58,7 +59,7 @@ void Simulation::start() {
         std::ostringstream requestsLog;
 
         // assigning requests (but not at every hour)
-        if (rand() % 5 == 0) {
+        if (generator() % 5 == 0) {
             requestsLog << manager.assignRequest(getReviewRequest(), h);
         }
 
@@ -93,9 +94,9 @@ std::string Simulation::summary() {
 std::shared_ptr<ReviewRequest> Simulation::getReviewRequest() {
     /* generating random request */
 
-    auto publisher = publishers[rand() % publishers.size()];
-    auto game = publisher->getGames()[rand() % publisher->getGames().size()];
-    auto hours = rand() % 10 + 10;
+    auto publisher = publishers[generator() % publishers.size()];
+    auto game = publisher->getGames()[generator() % publisher->getGames().size()];
+    auto hours = generator() % 10 + 10;
     auto request = std::make_shared<ReviewRequest>(requestId++, game, hours);
     publisher->addReviewRequest(request);
     return request;
@@ -115,22 +116,22 @@ std::string Simulation::getGameName() {
 }
 
 int Simulation::getTesterWage() {
-    return rand() % 15 + 10;
+    return generator() % 15 + 10;
 }
 
 std::set<Genre> Simulation::getTesterGenres() {
     /* generate random genres, that one tester can test */
 
     std::set<Genre> genres;
-    auto number_of_genres = rand() % 3 + 2;
-    for (int i = 0; i < number_of_genres; i++) {
+    auto number_of_genres = generator() % 3 + 2;
+    for (unsigned int i = 0; i < number_of_genres; i++) {
         genres.insert(getGenre());
     }
     return genres;
 }
 
 Genre Simulation::getGenre() {
-    return Genre(rand() % 16);
+    return Genre(generator() % 16);
 }
 
 void Simulation::save(const std::string &sim_log) {

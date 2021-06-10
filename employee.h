@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game.h"
+#include "file_names.h"
 
 #include <list>
 #include <queue>
@@ -64,4 +65,6 @@ public:
     std::string payoff();
 
     std::string checkPayments(int hour);
+
+    std::mt19937 generator;
 };
