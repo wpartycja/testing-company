@@ -14,7 +14,7 @@ Simulation::Simulation(int newSimulationLen, int newNumTesters, int newNumPublis
                        std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames)
         : simulation_len(newSimulationLen), num_testers(newNumTesters), num_publishers(newNumPublishers),
           num_games(newNumGames), gameNames(std::move(newGameNames)), publisherNames(std::move(newPublisherNames)),
-          gameId(0)  {
+          requestId(0), gameId(0)  {
 
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     generator = std::mt19937 (seed);
