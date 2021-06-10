@@ -39,10 +39,7 @@ int main(int argc, char* argv[]) {
     }
     file.close();
 
-
-
-
-     // checking the type of given arguments
+    // checking the type of given arguments
     for (int i = 1; i < 5; i++) {
         std::istringstream ss(argv[i]);
         int x;
@@ -69,6 +66,8 @@ int main(int argc, char* argv[]) {
                                  "Our maximum is: " << gamesNumber;
                     return 1;
                 }
+            default:
+                continue;
         }
     }
 

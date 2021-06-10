@@ -17,12 +17,10 @@ class Game {
     const int id;
     const Genre genre;
     const std::string title;
-    std::vector<float> ratings;
+    std::vector<int> ratings;
 
 public:
     Game(int n_id, Genre n_genre, std::string n_title);
-
-    int getId() const;
 
     Genre getGenre();
 
@@ -41,7 +39,7 @@ class ReviewRequest {
     int id;
     std::shared_ptr<Game> game;
     int hoursTested = 0;
-    int submissionHour;
+    int submissionHour = 0;
     int hourPaid = 0;
     bool paid = false;
     int hoursRequested;
@@ -83,7 +81,7 @@ public:
 
     int test(int hours);
 
-    std::string display();
+    std::string display() const;
 };
 
 std::ostream &operator<<(std::ostream &output, ReviewRequest &rewiew);

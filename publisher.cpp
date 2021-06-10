@@ -1,7 +1,9 @@
-#include <iostream>
-#include <utility>
 #include "publisher.h"
 
+#include <iostream>
+
+
+        /* class Publisher */
 
 //constructor
 Publisher::Publisher(std::string n_name, std::vector<std::shared_ptr<Game>> n_games) :

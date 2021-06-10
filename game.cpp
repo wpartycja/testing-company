@@ -1,20 +1,12 @@
 #include "game.h"
 
-#include <utility>
+        /* class Game */
 
+// constructor
+Game::Game(int newId, Genre newGenre, std::string newTitle) :
+        id(newId), genre(newGenre), title(std::move(newTitle)), ratings() {}
 
-
-
-//Game
-
-//constructor
-Game::Game(int n_id, Genre n_genre, std::string n_title) :
-        id(n_id), genre(n_genre), title(std::move(n_title)), ratings() {}
-
-//get functions
-int Game::getId() const {
-    return id;
-}
+// get functions
 
 Genre Game::getGenre() {
     return genre;
@@ -25,6 +17,8 @@ std::string Game::getTitle() const {
 }
 
 float Game::getAvgRating() {
+    /* returns average rating from all that received */
+
     size_t number_of_ratings = ratings.size();
     float sum = 0;
     for (unsigned int i = 0; i < number_of_ratings; i++) {
@@ -33,15 +27,14 @@ float Game::getAvgRating() {
     return sum / (float) number_of_ratings;
 }
 
-//add rating
 int Game::addRating(int rating) {
     ratings.push_back(rating);
     return rating;
 }
 
 std::string Game::display() {
-    std::string display = "";
-    display += "\tGame title: " + title + "\t\t\tGame ID: " + std::to_string(id);
+    std::string display;
+    display = "\tGame title: " + title + "\t\t\tGame ID: " + std::to_string(id);
     return display;
 }
 
@@ -50,14 +43,14 @@ std::ostream &operator<<(std::ostream &output, Game &game) {
 }
 
 
-//ReviewRequest
+        /* class ReviewRequest */
 
-//constructor
-ReviewRequest::ReviewRequest(int n_id, std::shared_ptr<Game> n_game, int n_hoursRequested) :
-        id(n_id), game(std::move(n_game)), hoursRequested(n_hoursRequested) {}
+// constructor
+ReviewRequest::ReviewRequest(int newId, std::shared_ptr<Game> newGame, int newHoursRequested) :
+        id(newId), game(std::move(newGame)), hoursRequested(newHoursRequested) {}
 
 
-//get function
+// get functions
 std::shared_ptr<Game> ReviewRequest::getGame() const {
     return game;
 }
@@ -71,8 +64,6 @@ int ReviewRequest::getRate() const {
 }
 
 int ReviewRequest::getPrice() const {
-    // mysle ze mozna to uzaleznic np. od liczby testerow(im wiecej testerow tym taniej) ale na razie zostawiam 30 na sztywno
-    // edit od Pati: zrobiłam tak że manager bedzie patrzył miedzy tym ile ma pracowników zdolnych do tego i na tej zasadzie ustalał cene
     return price;
 }
 
@@ -96,7 +87,7 @@ int ReviewRequest::getHourPaid() const {
     return hourPaid;
 }
 
-//set function
+// set functions
 void ReviewRequest::setPrice(int n_price) {
     price = n_price;
 }
@@ -123,20 +114,21 @@ void ReviewRequest::addOverhang(int overhang) {
     price += overhang;
 }
 
+// another
 int ReviewRequest::test(int hours) {
     int testedFor = std::min(hours, hoursRequested - hoursTested);
     hoursTested += testedFor;
     return testedFor;
 }
 
-std::string ReviewRequest::display() {
-    std::string display = "";
-    display += "\tId of new rewiew request: " + std::to_string(id) + "\n";
+std::string ReviewRequest::display() const {
+    std::string display;
+    display += "\tId of new request: " + std::to_string(id) + "\n";
     display += "\tTitle of the game: " + ReviewRequest::getGame()->getTitle() + "\n";
     display += "\tRequested hours to test: " + std::to_string(hoursRequested) + "\n";
     return display;
 }
 
-std::ostream &operator<<(std::ostream &output, ReviewRequest &rewiew) {
-    return output << rewiew.display();
+std::ostream &operator<<(std::ostream &output, ReviewRequest &review) {
+    return output << review.display();
 }

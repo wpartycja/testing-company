@@ -1,9 +1,11 @@
 #pragma once
 
+#include "game.h"
+
 #include <list>
 #include <queue>
-#include "game.h"
 #include <set>
+
 
 class Employee {
 protected:
@@ -11,18 +13,18 @@ protected:
     int wage{};
     int hoursWorked = 0;
 
-    virtual int bonus() = 0;
+    virtual unsigned int bonus() = 0;
 
 public:
     Employee();
 
-    Employee(int n_id, int n_wage);
+    Employee(const int newId, const int newWage);
 
     int getSalary();
 
     int getId() const;
 
-    int getHoursWorked();
+    int getHoursWorked() const;
 
     void addHoursWorked(int hours);
 };
@@ -30,11 +32,10 @@ public:
 class Tester : public Employee {
     const std::set<Genre> genres;
 
-    int bonus() override;
+    unsigned int bonus() override;
 
 public:
-    Tester(int n_id, int n_wage,
-           std::set<Genre> n_genres); // albo bez wage tylko zalozyc np 20 dla kazdego testera
+    Tester(int newId, int newWage, std::set<Genre> newGenres);
 
     bool canTest(Genre genre);
 
@@ -45,17 +46,14 @@ class Manager : public Employee {
     std::list<std::shared_ptr<Tester>> testers;
     std::vector<std::shared_ptr<ReviewRequest>> requestsCompleted;
     std::list<std::shared_ptr<ReviewRequest>> unpaidRequests;
-
-    int bonus() override;
-
     int allPayoffs = 0;
 
-public:
-    Manager(int n_id, int n_wage, std::list<std::shared_ptr<Tester>> testers);
+    unsigned int bonus() override;
 
+public:
     Manager();
 
-    bool canTest(Genre genre);
+    Manager(int newId, int newWage, std::list<std::shared_ptr<Tester>> testers);
 
     std::string nextHour(int hour);
 

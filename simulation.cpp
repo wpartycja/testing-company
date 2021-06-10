@@ -7,13 +7,16 @@
 #include <thread>
 #include <fstream>
 #include <sstream>
-#include <utility>
 
 
-Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games,
+std::string SAVE = "save.txt";
+
+        /* class Simulation */
+
+Simulation::Simulation(int newSimulationLen, int newNumTesters, int newNumPublishers, int newNumGames,
                        std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames)
-        : simulation_len(n_simulation_len), num_testers(n_num_testers), num_publishers(n_numb_publishers),
-          num_games(n_num_games), gameNames(std::move(newGameNames)), publisherNames(std::move(newPublisherNames)),
+        : simulation_len(newSimulationLen), num_testers(newNumTesters), num_publishers(newNumPublishers),
+          num_games(newNumGames), gameNames(std::move(newGameNames)), publisherNames(std::move(newPublisherNames)),
           requestId(0), gameId(0) {
 
 
@@ -44,10 +47,13 @@ Simulation::Simulation(int n_simulation_len, int n_num_testers, int n_numb_publi
 
 
 void Simulation::start() {
-    for (int h = 1; h <= simulation_len; h++) {
+    /* performs whole simulation, prints everything,
+     * save results to file */
 
+    for (int h = 1; h <= simulation_len; h++) {
         std::ostringstream requestsLog;
 
+        // assigning requests (but not at every hour)
         if (rand() % 5 == 0) {
             requestsLog << manager.assignRequest(getReviewRequest(), h);
         }
@@ -59,6 +65,7 @@ void Simulation::start() {
         save(testingLog.str());
 //        std::this_thread::sleep_for(std::chrono::milliseconds(300));
 
+        // waiting for user interaction to go to next hour
         #ifdef WIN32
             std::system("pause");
         #else
@@ -71,6 +78,8 @@ void Simulation::start() {
 }
 
 std::string Simulation::summary() {
+    /* returns summary of a whole simulation */
+
     std::ostringstream summary;
     summary << "\n\n\n\t***Summary***\n\nSimulation duration: " << simulation_len <<"h.\nNumber of testers: " << num_testers
             << "\n\nManager:\n" << manager.summary();
@@ -78,6 +87,8 @@ std::string Simulation::summary() {
 }
 
 std::shared_ptr<ReviewRequest> Simulation::getReviewRequest() {
+    /* generating random request */
+
     auto publisher = publishers[rand() % publishers.size()];
     auto game = publisher->getGames()[rand() % publisher->getGames().size()];
     auto hours = rand() % 10 + 10;
@@ -104,6 +115,8 @@ int Simulation::getTesterWage() {
 }
 
 std::set<Genre> Simulation::getTesterGenres() {
+    /* generate random genres, that one tester can test */
+
     std::set<Genre> genres;
     auto number_of_genres = rand() % 3 + 2;
     for (int i = 0; i < number_of_genres; i++) {
@@ -116,9 +129,11 @@ Genre Simulation::getGenre() {
     return Genre(rand() % 16);
 }
 
-void Simulation::save(std::string sim_log) {
+void Simulation::save(const std::string &sim_log) {
+    /* save information to file */
+
     std::fstream file;
-    file.open("save.txt", std::ios::out | std::ios::app);
+    file.open(SAVE, std::ios::out | std::ios::app);
     file << sim_log;
     file.close();
 }

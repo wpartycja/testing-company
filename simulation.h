@@ -27,8 +27,6 @@ class Simulation {
     int requestId;
     int gameId;
 
-
-
     static Genre getGenre();
 
     static int getTesterWage();
@@ -41,13 +39,13 @@ class Simulation {
 
     std::shared_ptr<ReviewRequest> getReviewRequest();
 
-    void save(std::string);
+    static void save(const std::string&);
 
     std::string summary();
 
 public:
 
-    Simulation(int n_simulation_len, int n_num_testers, int n_numb_publishers, int n_num_games,
+    Simulation(int newSimulationLen, int newNumTesters, int newNumPublishers, int newNumGames,
                std::stack<std::string> newGameNames, std::stack<std::string> newPublisherNames);
 
     void start();
