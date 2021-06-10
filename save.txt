@@ -126,3 +126,42 @@ Manager earned: 250zl
 
 Unfinished requests:
 None - All tasks are completed
+
+Hour 1:
+Waiting for requests
+
+Hour 2:
+Waiting for requests
+
+Hour 3:
+Waiting for requests
+
+Hour 4:
+	|New request (0) : Borderlands 2, Publisher: Sega
+	|Price: 13h * 100zl/h = 1300zl
+
+(0) Borderlands 2, Publisher: Sega
+[+            ] 1/13h (+1h)
+
+	|Request nr 0: (Borderlands 2) has not been paid yet.
+
+Hour 5:
+(0) Borderlands 2, Publisher: Sega
+[#+           ] 2/13h (+1h)
+
+	|Request nr 0: (Borderlands 2) has not been paid yet.
+
+Hour 6:
+(0) Borderlands 2, Publisher: Sega
+[##+          ] 3/13h (+1h)
+
+	|Request nr 0: (Borderlands 2) has not been paid yet.
+
+Hour 7:
+(0) Borderlands 2, Publisher: Sega
+[###+         ] 4/13h (+1h)
+
+	|Request nr 0: (Borderlands 2) has not been paid yet.
+
+Hour 1:
+Waiting for requests
